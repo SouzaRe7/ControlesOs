@@ -32,5 +32,6 @@ const SITUACAO_MANUTENCAO_EQUIPAMENTO = 3;
 const PERFIL_ADM = 1;
 const PERFIL_FUNCIONARIO = 2;
 const PERFIL_TECNICO = 3;
+const teste = 4;
 
 define('PATH_URL', $_SERVER["DOCUMENT_ROOT"] . '/ControlesOs1/src/');
