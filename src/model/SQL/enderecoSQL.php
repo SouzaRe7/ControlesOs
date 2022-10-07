@@ -18,7 +18,7 @@ class EnderecoSQL{
 
     public static function CADASTRAR_ESTADO_SQL()
     {
-        $sql = "INSERT INTO tb_estado (nome_estado, sigla_estado) VALUES (?,?)";
+        $sql = "INSERT INTO tb_estado (sigla_estado) VALUES (?)";
         return $sql;
     }
 
@@ -36,7 +36,7 @@ class EnderecoSQL{
 
     public static function UPDATE_ENDERECO_SQL()
     {
-        $sql = "UPDATE tb_endereco SET rua = ?, bairro = ?, cep = ?, cidade_id = ?, WHERE id = ?";
+        $sql = "UPDATE tb_endereco SET rua = ?, bairro = ?, cep = ?, cidade_id = ? WHERE id = ?";
         return $sql;
     }
 

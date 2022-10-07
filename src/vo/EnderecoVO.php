@@ -11,14 +11,22 @@ class EnderecoVO extends LogErroVO {
     private $bairro;
     private $cep;
     private $idCidade;
+    private $idEstado;
     private $nome_cidade;
     private $sigla_estado;
 
     public function setIdCidade($idCidade){
-        $this->idCidade = Util::TratarDados($idCidade); 
+        $this->idCidade = $idCidade; 
     }
     public function getIdCidade(){
         return $this->idCidade;
+    }
+
+    public function setIdEstado($idEstado){
+        $this->idEstado = $idEstado; 
+    }
+    public function getIdEstado(){
+        return $this->idEstado;
     }
     
     public function setNomeCiadade($nome_cidade)

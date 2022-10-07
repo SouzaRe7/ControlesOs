@@ -7,7 +7,7 @@ class FuncionarioVO extends UsuarioVO{
     private $idSetor;
 
     public function setIdSetor($idSetor){
-        $this->idSetor = Util::TratarDados($idSetor);
+        $this->idSetor = $idSetor;
     }
     public function getIdSetor(){
         return $this->idSetor;
