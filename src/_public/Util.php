@@ -50,4 +50,10 @@ class Util
         self::SetarFusoHorario();
         return date('Y-d-m');
     }
+
+    public static function CriarSenha($senha)
+    {
+        $senhaArray = explode('@', $senha) ;
+        return password_hash($senhaArray[0], PASSWORD_DEFAULT);
+    }
 }

@@ -6,16 +6,19 @@ const CADASTRO_SETOR = "CadastrarSetor";
 const CADASTRO_MODELO = "CadastrarModelo";
 const CADASTRO_EQUIPAMENTO = "CadastroEquipamento";
 const CADASTRO_ALOCAR_EQUIPAMENTO = "CadastroAlocarEquipamento";
+const CADASTRO_USUARIO = "CadastroUsuario";
 
 const ALTERAR_TIPO_EQUIPAMENTO = "AlterarTipoEquipamento";
 const ALTERAR_SETOR = "AlterarSetor";
 const ALTERAR_MODELO = "AlterarModelo";
 const ALTERAR_EQUIPAMENTO = "AlterarEquipamento";
+const ALTERAR_USUARIO = "AlterarUsuario";
 
 const EXCLUIR_TIPO_EQUIPAMENTO = "ExcluirTipoEquipamento";
 const EXCLUIR_SETOR = "ExcluirSetor";
 const EXCLUIR_MODELO = "ExcluirModelo";
 const EXCLUIR_EQUIPAMENTO = "ExcluirEquipamento";
+const EXCLUIR_USUARIO = "ExcluirUsuario";
 
 #dados combo filtro
 const FILTRO_TIPO = 1;
@@ -32,5 +35,8 @@ const SITUACAO_MANUTENCAO_EQUIPAMENTO = 3;
 const PERFIL_ADM = 1;
 const PERFIL_FUNCIONARIO = 2;
 const PERFIL_TECNICO = 3;
+# Status do perfil
+const STATUS_ATIVO = 1;
+const STATUS_INATIVO = 0;
 
 define('PATH_URL', $_SERVER["DOCUMENT_ROOT"] . '/ControlesOs1/src/');

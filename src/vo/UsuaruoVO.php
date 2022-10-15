@@ -36,13 +36,6 @@ class UsuarioVO extends EnderecoVO
         return $this->nome;
     }
     
-    public function setSobrenome($nome){
-        $this->nome = Util::TratarDados($nome);
-    }
-    public function getSobrenome(){
-        return $this->nome;
-    }
-
     public function setLogin($login){
         $this->login = Util::TratarDados($login);
     }

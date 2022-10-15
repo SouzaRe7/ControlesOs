@@ -83,10 +83,6 @@ require_once dirname(__DIR__, 2) . '/resource/dataview/usuario_dataview.php';
                                         <input id="admEmail" name="admEmail" class="form-control obg" placeholder="E-mail">
                                     </div>
                                     <div class="form-group col-md-3">
-                                        <label>Senha</label>
-                                        <input id="admSanha" name="admSenha" class="form-control obg" type="password" placeholder="Senha">
-                                    </div>
-                                    <div class="form-group col-md-3">
                                         <label>Telefone</label>
                                         <input id="admFone" name="admFone" class="form-control obg cel" placeholder="Telefone">
                                     </div>
