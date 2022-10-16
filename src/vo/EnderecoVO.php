@@ -69,7 +69,7 @@ class EnderecoVO extends LogErroVO {
     }
 
     public function setCep($cep){
-        $this->cep = Util::TratarDados($cep);
+        $this->cep = Util::remove_especial_char($cep);
     } 
     public function getCep(){
         return $this->cep;

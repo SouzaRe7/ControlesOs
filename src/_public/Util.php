@@ -56,4 +56,10 @@ class Util
         $senhaArray = explode('@', $senha) ;
         return password_hash($senhaArray[0], PASSWORD_DEFAULT);
     }
+
+    public static function remove_especial_char($string){
+        $especiais= Array(".",",",";","!","@","#","%","¨","*","(",")","+","-","=", "§","$","|","\\",":","/","<",">","?","{","}","[","]","&","'",'"',"´","`","?",'“','”','$',"'","'",' ');
+        $string = str_replace($especiais,"",strip_tags(trim($string)));
+        return $string;
+      }
 }

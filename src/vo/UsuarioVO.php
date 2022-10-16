@@ -58,7 +58,7 @@ class UsuarioVO extends EnderecoVO
     }
 
     public function setFone($fone){
-        $this->fone = Util::TratarDados($fone);
+        $this->fone = Util::remove_especial_char($fone);
     }
     public function getFone(){
         return $this->fone;

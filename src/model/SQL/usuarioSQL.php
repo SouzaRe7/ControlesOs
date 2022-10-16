@@ -2,7 +2,7 @@
 
 namespace Src\model\SQL;
 
-class UsuariroSQL{
+class UsuarioSQL{
     
     public static function CADASTRAR_USUARIO_SQL()
     {
@@ -22,9 +22,12 @@ class UsuariroSQL{
         return $sql;
     }
     
-    public static function ULTIMO_USUARIO_CADASTRADO()
+    public static function SELECIONAR_EMAIL($id)
     {
-        $sql = "SELECT id, tipo, nome FROM tb_usuario ORDER BY id DESC LIMIT 1";
+        $sql = "SELECT login FROM tb_usuario WHERE login = ?";
+
+        if(!empty($id))
+            $sql .= " AND id != ?";
         return $sql;
     }
 }

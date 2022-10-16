@@ -33,7 +33,7 @@ function NotificarCamposGenerico(form_id) {
 }
 function LimparCamposGenerico(form_id) {
 
-    $("#" + form_id + " input, " + "#" + form_id + "" + "#" + form_id + "" + "#" + form_id + " select, textarea ").each(function () {
+    $("#" + form_id + " input, select, textarea ").each(function () {
         $(this).val('');
 
     })
@@ -57,7 +57,7 @@ function CarregarModalExcluir(id, nome) {
 
 function LimparNotificarCamposGenerico(form_id){
 
-    $("#" + form_id + " input, " + "#" + form_id + "" + "#" + form_id + "" + "#" + form_id + " select, textarea ").each(function () {
+    $("#" + form_id + " input, select, textarea ").each(function () {
         $(this).removeClass("is-invalid");
         $(this).removeClass("is-valid");
     })

@@ -4,7 +4,7 @@ namespace Src\model;
 
 use Exception;
 use Src\model\Conexao;
-use Src\model\SQL\UsuariroSQL;
+use Src\model\SQL\UsuarioSQL;
 use Src\model\SQL\EnderecoSQL;
 use Src\VO\UsuarioVO;
 
@@ -17,9 +17,22 @@ class usuarioDAO extends Conexao
         $this->conexao = parent::retornaConexao();
     }
 
+    public function VerificarEmailDuplicadoDAO($id,$email)
+    {
+        $sql = $this->conexao->prepare(UsuarioSQL::SELECIONAR_EMAIL($id));
+        $i = 1;
+        $sql->bindValue($i++, $email);
+
+        if(!empty($id))
+            $sql->bindValue($i++, $id);
+
+        $sql->execute();
+        return $sql->fetch(\PDO::FETCH_ASSOC)['login'] == '' ? true : false;
+    }
+
     public function CadastrarUsuarioDAO($vo)
     {   # Cadastra usuario
-        $sql = $this->conexao->prepare(UsuariroSQL::CADASTRAR_USUARIO_SQL());
+        $sql = $this->conexao->prepare(UsuarioSQL::CADASTRAR_USUARIO_SQL());
         $i = 1;
         $sql->bindValue($i++, $vo->getTipo());
         $sql->bindValue($i++, $vo->getNome());
@@ -74,15 +87,15 @@ class usuarioDAO extends Conexao
             $sql->execute();
             # Verificar o tipo de usuario 1-Administrador, 2-Funcionário ou 3-Tecnico
             switch ($vo->getTipo()) {
-                case 2: # Cadastra Funcionário
-                    $sql = $this->conexao->prepare(UsuariroSQL::CADASTRAR_FUNCIONARIO_SQL());
+                case '2': # Cadastra Funcionário
+                    $sql = $this->conexao->prepare(UsuarioSQL::CADASTRAR_FUNCIONARIO_SQL());
                     $i = 1;
                     $sql->bindValue($i++, $idUser);
                     $sql->bindValue($i++, $vo->getIdSetor());
                     $sql->execute();
                     break;
-                case 3: # Cadastra Tecnico
-                    $sql = $this->conexao->prepare(UsuariroSQL::CADASTRAR_TECNICO_SQL());
+                case '3': # Cadastra Tecnico
+                    $sql = $this->conexao->prepare(UsuarioSQL::CADASTRAR_TECNICO_SQL());
                     $i = 1;
                     $sql->bindValue($i++, $idUser);
                     $sql->bindValue($i++, $vo->getNomeEmpresa());

@@ -51,7 +51,7 @@ require_once dirname(__DIR__, 2) . '/resource/dataview/usuario_dataview.php';
                             <div class="row">
                                 <div class="form-group col-md-12" id="idtipo">
                                     <label>Tipo</label>
-                                    <select id="admTipo" name="admTipo" class="form-control select2" style="width: 100%;" onchange="EscolherUsuario(this.value,'idForm')">
+                                    <select id="Tipo" name="Tipo" class="form-control" onchange="EscolherUsuario(this.value,'idForm')">
                                         <option value="">Selecione</option>
                                         <option value="<?= PERFIL_ADM ?>">Administrador</option>
                                         <option value="<?= PERFIL_FUNCIONARIO ?>">Funcionário</option>
@@ -60,11 +60,11 @@ require_once dirname(__DIR__, 2) . '/resource/dataview/usuario_dataview.php';
                                 </div>
                                 <div class="form-group ocultar col-md-12" id="divNome">
                                     <label>Nome</label>
-                                    <input id="admNome" name="admNome" class="form-control obg" placeholder="Nome">
+                                    <input id="Nome" name="Nome" class="form-control obg" placeholder="Nome">
                                 </div>
                                 <div class="form-group ocultar col-md-12" id="divFunc">
                                     <label>Setor</label>
-                                    <select id="admSetor" name="admSetor" class="form-control select2 obg" style="width: 100%;">
+                                    <select id="Setor" name="Setor" class="form-control">
                                         <option value="">Selecione</option>
                                         <?php foreach ($setor as $s) : ?>
                                             <option value="<?= $s['id'] ?>"><?= $s['nome_setor'] ?></option>
@@ -73,22 +73,22 @@ require_once dirname(__DIR__, 2) . '/resource/dataview/usuario_dataview.php';
                                 </div>
                                 <div class="form-group ocultar col-md-12" id="divEmp">
                                     <label>Empresa</label>
-                                    <input id="admNomeEmp" name="admNomeEmp" class="form-control obg" placeholder="Empresa">
+                                    <input id="Emp" name="Emp" class="form-control" placeholder="Empresa">
                                 </div>
                             </div>
                             <div id="divGeral" class="ocultar">
                                 <div class="row">
                                     <div class="form-group col-md-6">
                                         <label>E-mail</label>
-                                        <input id="admEmail" name="admEmail" class="form-control obg" placeholder="E-mail">
+                                        <input id="Email" name="Email" class="form-control obg" placeholder="E-mail">
                                     </div>
-                                    <div class="form-group col-md-3">
+                                    <div class="form-group col-md-6">
                                         <label>Telefone</label>
-                                        <input id="admFone" name="admFone" class="form-control obg cel" placeholder="Telefone">
+                                        <input id="Fone" name="Fone" class="form-control cel obg" placeholder="Telefone">
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label>Cep</label>
-                                        <input id="cep" name="cep" class="form-control obg cep" onblur="BuscarCep()" placeholder="Cep">
+                                        <input id="cep" name="cep" class="form-control cep obg" onblur="BuscarCep()" placeholder="Cep">
                                     </div>
                                     <div class="form-group col-md-8">
                                         <label>Rua</label>
@@ -98,7 +98,6 @@ require_once dirname(__DIR__, 2) . '/resource/dataview/usuario_dataview.php';
                                         <label>Bairro</label>
                                         <input id="bairro" name="bairro" class="form-control obg" placeholder="Bairro">
                                     </div>
-
                                     <div class="form-group col-md-4">
                                         <label>Cidade</label>
                                         <input id="cidade" name="cidade" class="form-control obg" placeholder="Cidade">
@@ -110,7 +109,7 @@ require_once dirname(__DIR__, 2) . '/resource/dataview/usuario_dataview.php';
                                 </div>
                             </div>
                             <div class="form-group ocultar" id="divButton">
-                                <button onclick="return NotificarCamposGenerico('idForm') " name="btnGravar" type="button" class="btn btn-block btn-primary col-md-4">Gravar</button>
+                                <button onclick="return NotificarCamposGenerico('idForm')" name="btnGravar" id="btnGravar" class="btn btn-block btn-primary col-md-4">Gravar</button>
                             </div>
                         </form>
                     </div>

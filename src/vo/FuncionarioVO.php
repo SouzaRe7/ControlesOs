@@ -1,7 +1,8 @@
 <?php
 namespace Src\VO;
-use Src\_public\Util;
+
 use Src\VO\UsuarioVO;
+
 class FuncionarioVO extends UsuarioVO{
 
     private $idSetor;

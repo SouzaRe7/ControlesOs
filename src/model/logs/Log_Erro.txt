@@ -154,3 +154,93 @@ HORA: 22:57:41
 FUNÇÃO: ExcluirTipoEquipamento
 COD. LOGADO: 1
 ERRO: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_os`.`tb_equipamento`, CONSTRAINT `fk_tb_equipamento_tb_tipoequip1` FOREIGN KEY (`tipoequip_id`) REFERENCES `tb_tipoequip` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+--------------------------------------------------------
+DATA: 15/10/2022
+HORA: 23:23:07
+FUNÇÃO: ExcluirTipoEquipamento
+COD. LOGADO: 1
+ERRO: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_os`.`tb_equipamento`, CONSTRAINT `fk_tb_equipamento_tb_tipoequip1` FOREIGN KEY (`tipoequip_id`) REFERENCES `tb_tipoequip` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+--------------------------------------------------------
+DATA: 15/10/2022
+HORA: 23:23:09
+FUNÇÃO: ExcluirTipoEquipamento
+COD. LOGADO: 1
+ERRO: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_os`.`tb_equipamento`, CONSTRAINT `fk_tb_equipamento_tb_tipoequip1` FOREIGN KEY (`tipoequip_id`) REFERENCES `tb_tipoequip` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+--------------------------------------------------------
+DATA: 15/10/2022
+HORA: 23:23:10
+FUNÇÃO: ExcluirTipoEquipamento
+COD. LOGADO: 1
+ERRO: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_os`.`tb_equipamento`, CONSTRAINT `fk_tb_equipamento_tb_tipoequip1` FOREIGN KEY (`tipoequip_id`) REFERENCES `tb_tipoequip` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+--------------------------------------------------------
+DATA: 15/10/2022
+HORA: 23:23:14
+FUNÇÃO: ExcluirTipoEquipamento
+COD. LOGADO: 1
+ERRO: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_os`.`tb_equipamento`, CONSTRAINT `fk_tb_equipamento_tb_tipoequip1` FOREIGN KEY (`tipoequip_id`) REFERENCES `tb_tipoequip` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+--------------------------------------------------------
+DATA: 15/10/2022
+HORA: 23:23:22
+FUNÇÃO: ExcluirTipoEquipamento
+COD. LOGADO: 1
+ERRO: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_os`.`tb_equipamento`, CONSTRAINT `fk_tb_equipamento_tb_tipoequip1` FOREIGN KEY (`tipoequip_id`) REFERENCES `tb_tipoequip` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+--------------------------------------------------------
+DATA: 15/10/2022
+HORA: 23:23:23
+FUNÇÃO: ExcluirTipoEquipamento
+COD. LOGADO: 1
+ERRO: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_os`.`tb_equipamento`, CONSTRAINT `fk_tb_equipamento_tb_tipoequip1` FOREIGN KEY (`tipoequip_id`) REFERENCES `tb_tipoequip` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+--------------------------------------------------------
+DATA: 15/10/2022
+HORA: 23:23:26
+FUNÇÃO: ExcluirTipoEquipamento
+COD. LOGADO: 1
+ERRO: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_os`.`tb_equipamento`, CONSTRAINT `fk_tb_equipamento_tb_tipoequip1` FOREIGN KEY (`tipoequip_id`) REFERENCES `tb_tipoequip` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+--------------------------------------------------------
+DATA: 15/10/2022
+HORA: 23:23:28
+FUNÇÃO: ExcluirTipoEquipamento
+COD. LOGADO: 1
+ERRO: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_os`.`tb_equipamento`, CONSTRAINT `fk_tb_equipamento_tb_tipoequip1` FOREIGN KEY (`tipoequip_id`) REFERENCES `tb_tipoequip` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+--------------------------------------------------------
+DATA: 15/10/2022
+HORA: 23:23:28
+FUNÇÃO: ExcluirTipoEquipamento
+COD. LOGADO: 1
+ERRO: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_os`.`tb_equipamento`, CONSTRAINT `fk_tb_equipamento_tb_tipoequip1` FOREIGN KEY (`tipoequip_id`) REFERENCES `tb_tipoequip` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+--------------------------------------------------------
+DATA: 15/10/2022
+HORA: 23:23:28
+FUNÇÃO: ExcluirTipoEquipamento
+COD. LOGADO: 1
+ERRO: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_os`.`tb_equipamento`, CONSTRAINT `fk_tb_equipamento_tb_tipoequip1` FOREIGN KEY (`tipoequip_id`) REFERENCES `tb_tipoequip` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+--------------------------------------------------------
+DATA: 15/10/2022
+HORA: 23:23:28
+FUNÇÃO: ExcluirTipoEquipamento
+COD. LOGADO: 1
+ERRO: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_os`.`tb_equipamento`, CONSTRAINT `fk_tb_equipamento_tb_tipoequip1` FOREIGN KEY (`tipoequip_id`) REFERENCES `tb_tipoequip` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+--------------------------------------------------------
+DATA: 15/10/2022
+HORA: 23:23:46
+FUNÇÃO: ExcluirTipoEquipamento
+COD. LOGADO: 1
+ERRO: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_os`.`tb_equipamento`, CONSTRAINT `fk_tb_equipamento_tb_tipoequip1` FOREIGN KEY (`tipoequip_id`) REFERENCES `tb_tipoequip` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+--------------------------------------------------------
+DATA: 15/10/2022
+HORA: 23:23:47
+FUNÇÃO: ExcluirTipoEquipamento
+COD. LOGADO: 1
+ERRO: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_os`.`tb_equipamento`, CONSTRAINT `fk_tb_equipamento_tb_tipoequip1` FOREIGN KEY (`tipoequip_id`) REFERENCES `tb_tipoequip` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+--------------------------------------------------------
+DATA: 15/10/2022
+HORA: 23:23:47
+FUNÇÃO: ExcluirTipoEquipamento
+COD. LOGADO: 1
+ERRO: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_os`.`tb_equipamento`, CONSTRAINT `fk_tb_equipamento_tb_tipoequip1` FOREIGN KEY (`tipoequip_id`) REFERENCES `tb_tipoequip` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+--------------------------------------------------------
+DATA: 15/10/2022
+HORA: 23:23:47
+FUNÇÃO: ExcluirTipoEquipamento
+COD. LOGADO: 1
+ERRO: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_os`.`tb_equipamento`, CONSTRAINT `fk_tb_equipamento_tb_tipoequip1` FOREIGN KEY (`tipoequip_id`) REFERENCES `tb_tipoequip` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)

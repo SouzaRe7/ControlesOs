@@ -1,6 +1,7 @@
 <?php
 include_once '_include_autoload.php';
 
+use Src\_public\Util;
 use Src\controller\setorController;
 use Src\controller\UsuarioController;
 use Src\VO\FuncionarioVO;
@@ -12,31 +13,37 @@ $usuarioCTRL = new UsuarioController();
 
 $setor = $setorCTRL->SelecioneSetorCtrl();
 
-if (isset($_POST['btnGravar'])) :
+/*if(isset($_POST['verificarEmail'])):
+    $ret = $usuarioCTRL->VerificarEmailDuplicadoCTRL($_POST['email']);
+    if($ret)
+    echo 1;
+    else
+    echo -1;
+else*/if (isset($_POST['btnGravar'])) :
 
-    switch ($_POST['admTipo']) {
-        case '1':
+    switch ($_POST['Tipo']) {
+        case '1' :
             $vo = new UsuarioVO();
-            $vo->setNome($_POST['admNome']);
-            $vo->setLogin($_POST['admEmail']);
-            $vo->setFone($_POST['admFone']);
-            $vo->setTipo($_POST['admTipo']);
+            $vo->setNome($_POST['Nome']);
+            $vo->setLogin($_POST['Email']);
+            $vo->setFone($_POST['Fone']);
+            $vo->setTipo($_POST['Tipo']);
             break;
-        case '2':
+        case '2' :
             $vo = new FuncionarioVO();
-            $vo->setNome($_POST['admNome']);
-            $vo->setLogin($_POST['admEmail']);
-            $vo->setFone($_POST['admFone']);
-            $vo->setTipo($_POST['admTipo']);
-            $vo->setIdSetor($_POST['admSetor']);
+            $vo->setNome($_POST['Nome']);
+            $vo->setLogin($_POST['Email']);
+            $vo->setFone($_POST['Fone']);
+            $vo->setTipo($_POST['Tipo']);
+            $vo->setIdSetor($_POST['Setor']);
             break;
-        case '3':
+        case '3' :
             $vo = new TecnicoVO();
-            $vo->setNome($_POST['admNome']);
-            $vo->setLogin($_POST['admEmail']);
-            $vo->setFone($_POST['admFone']);
-            $vo->setTipo($_POST['admTipo']);
-            $vo->setNomeEmpresa($_POST['admNomeEmp']);
+            $vo->setNome($_POST['Nome']);
+            $vo->setLogin($_POST['Email']);
+            $vo->setFone($_POST['Fone']);
+            $vo->setTipo($_POST['Tipo']);
+            $vo->setNomeEmpresa($_POST['Emp']);
             break;
     }
 
