@@ -13,23 +13,23 @@ $usuarioCTRL = new UsuarioController();
 
 $setor = $setorCTRL->SelecioneSetorCtrl();
 
-/*if(isset($_POST['verificarEmail'])):
-    $ret = $usuarioCTRL->VerificarEmailDuplicadoCTRL($_POST['email']);
-    if($ret)
-    echo 1;
+if (isset($_POST['verificarEmail']) and $_POST['verificarEmail'] == 'ajx') :
+    $ret = $usuarioCTRL->VerificarEmailDuplicadoCTRL($_POST['Email']);
+    if ($ret)
+        echo 1; // Não existe
     else
-    echo -1;
-else*/if (isset($_POST['btnGravar'])) :
+        echo -1; // Já existe, deixa cadastrar o email
+elseif (isset($_POST['btnGravar'])) :
 
     switch ($_POST['Tipo']) {
-        case '1' :
+        case '1':
             $vo = new UsuarioVO();
             $vo->setNome($_POST['Nome']);
             $vo->setLogin($_POST['Email']);
             $vo->setFone($_POST['Fone']);
             $vo->setTipo($_POST['Tipo']);
             break;
-        case '2' :
+        case '2':
             $vo = new FuncionarioVO();
             $vo->setNome($_POST['Nome']);
             $vo->setLogin($_POST['Email']);
@@ -37,7 +37,7 @@ else*/if (isset($_POST['btnGravar'])) :
             $vo->setTipo($_POST['Tipo']);
             $vo->setIdSetor($_POST['Setor']);
             break;
-        case '3' :
+        case '3':
             $vo = new TecnicoVO();
             $vo->setNome($_POST['Nome']);
             $vo->setLogin($_POST['Email']);

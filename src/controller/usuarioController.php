@@ -13,7 +13,7 @@ class UsuarioController
         $this->dao = new usuarioDAO;
     }
 
-    public function VerificarEmailDuplicadoCTRL($id,$email) : bool
+    public function VerificarEmailDuplicadoCTRL($email, $id = '') : bool
     {
         return $this->dao->VerificarEmailDuplicadoDAO($id,$email);
     }

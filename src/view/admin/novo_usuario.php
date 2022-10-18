@@ -80,7 +80,7 @@ require_once dirname(__DIR__, 2) . '/resource/dataview/usuario_dataview.php';
                                 <div class="row">
                                     <div class="form-group col-md-6">
                                         <label>E-mail</label>
-                                        <input id="Email" name="Email" class="form-control obg" placeholder="E-mail">
+                                        <input id="Email" name="Email" onchange="VerificarEmail(this.value)" class="form-control obg" placeholder="E-mail">
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label>Telefone</label>
@@ -130,6 +130,7 @@ require_once dirname(__DIR__, 2) . '/resource/dataview/usuario_dataview.php';
     <?php include_once PATH_URL . '/template/_includes/_script.php';
     include_once PATH_URL . '/template/_includes/_msg.php'; ?>
     <script src="../../resource/ajax/buscar_cep-ajx.js"></script>
+    <script src="../../resource/ajax/usuario-ajx.js"></script>
 </body>
 
 </html>

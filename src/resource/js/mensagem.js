@@ -48,3 +48,6 @@ function MensagemCamposObrigatorios() {
 function MensagemSucesso() {
     toastr.success(RetornarMsg(1));
 }
+function MensagemGenerica(texto){
+    toastr.info(texto);
+}
