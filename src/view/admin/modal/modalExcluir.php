@@ -13,7 +13,7 @@
             </div>
             <div class="modal-footer justify-content-between">
                 <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Cancelar</button>
-                <button onclick="return Excluir()" name="btnExcluir" type="submit" class="btn btn-outline-dark">Sim</button>
+                <button onclick="return Excluir()" name="btnExcluir" type="button" class="btn btn-outline-dark">Sim</button>
             </div>
         </div>
         <!-- /.modal-content -->
