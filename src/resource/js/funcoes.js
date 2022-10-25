@@ -34,8 +34,14 @@ function NotificarCamposGenerico(form_id) {
 function LimparCamposGenerico(form_id) {
 
     $("#" + form_id + " input, select, textarea ").each(function () {
-        $(this).val('');
-
+        if ($(this).hasClass("obg")) {
+            $(this).val('');
+        }
+        if($(this).hasClass("is-invalid")){
+            $(this).removeClass("is-invalid");
+        }else{
+            $(this).removeClass("is-valid");
+        }
     })
 }
 function CarregarAlteracaoTipoEquipamento(id, nome) {

@@ -109,7 +109,7 @@ require_once dirname(__DIR__, 2) . '/resource/dataview/usuario_dataview.php';
                                 </div>
                             </div>
                             <div class="form-group ocultar" id="divButton">
-                                <button onclick="return NotificarCamposGenerico('idForm')" name="btnGravar" id="btnGravar" class="btn btn-block btn-primary col-md-4">Gravar</button>
+                                <button onclick="return CadastrarNovoUsuarioAJX('idForm')" name="btnGravar" id="btnGravar" type="button" class="btn btn-block btn-primary col-md-4">Gravar</button>
                             </div>
                         </form>
                     </div>

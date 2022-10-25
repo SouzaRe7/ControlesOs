@@ -55,4 +55,8 @@ elseif (isset($_POST['btnGravar'])) :
 
     $ret = $usuarioCTRL->CadastrarUsuarioCTRL($vo);
 
+    if($_POST['btnGravar'] == 'ajx'):
+        echo $ret;
+    endif;
+
 endif;
