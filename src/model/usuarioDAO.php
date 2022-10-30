@@ -3,6 +3,7 @@
 namespace Src\model;
 
 use Exception;
+use Src\_public\Util;
 use Src\model\Conexao;
 use Src\model\SQL\UsuarioSQL;
 use Src\model\SQL\EnderecoSQL;
@@ -15,6 +16,40 @@ class usuarioDAO extends Conexao
     public function __construct()
     {
         $this->conexao = parent::retornaConexao();
+    }
+
+    public function DetalharUsuarioDAO($idUser)
+    {
+        $sql = $this->conexao->prepare(UsuarioSQL::DETALHAR_USUARIO_SQL());
+        $sql->bindValue(1, $idUser);
+        $sql->execute();
+        return $sql->fetch(\PDO::FETCH_ASSOC);
+    }
+
+    public function MudarStatusDAO(UsuarioVO $vo)
+    {
+        $sql = $this->conexao->prepare(UsuarioSQL::MUDAR_STATUS_SQL());
+        $i = 1;
+        $sql->bindValue($i++, $vo->getStatus());
+        $sql->bindValue($i++, $vo->getId());
+        try {
+            $sql->execute();
+            return 1;
+        } catch (Exception $ex) {
+            $vo->setMsgErro($ex->getMessage());
+            parent::GravarLogErro($vo);
+            return -1;
+        }
+
+    }
+    public function FiltrarUsuarioDAO($nome)
+    {
+        $sql = $this->conexao->prepare(UsuarioSQL::FILTRAR_USUARIO_SQL($nome));
+        if(!empty($nome))
+            $sql->bindValue(1,'%'. $nome . '%');
+            
+        $sql->execute();
+        return $sql->fetchAll(\PDO::FETCH_ASSOC);
     }
 
     public function VerificarEmailDuplicadoDAO($id,$email)
@@ -76,6 +111,7 @@ class usuarioDAO extends Conexao
             } else {
                 $idCidade = $temCidade[0]['id'];
             }
+            Util::Mostrar($idCidade);
             # Cadastrar endereço
             $sql = $this->conexao->prepare(EnderecoSQL::CADASTRAR_ENDERECO_SQL());
             $i = 1;

@@ -53,13 +53,46 @@ class Util
 
     public static function CriarSenha($senha)
     {
-        $senhaArray = explode('@', $senha) ;
+        $senhaArray = explode('@', $senha);
         return password_hash($senhaArray[0], PASSWORD_DEFAULT);
     }
 
-    public static function remove_especial_char($string){
-        $especiais= Array(".",",",";","!","@","#","%","¨","*","(",")","+","-","=", "§","$","|","\\",":","/","<",">","?","{","}","[","]","&","'",'"',"´","`","?",'“','”','$',"'","'",' ');
-        $string = str_replace($especiais,"",strip_tags(trim($string)));
+    public static function remove_especial_char($string)
+    {
+        $especiais = array(".", ",", ";", "!", "@", "#", "%", "¨", "*", "(", ")", "+", "-", "=", "§", "$", "|", "\\", ":", "/", "<", ">", "?", "{", "}", "[", "]", "&", "'", '"', "´", "`", "?", '“', '”', '$', "'", "'", ' ');
+        $string = str_replace($especiais, "", strip_tags(trim($string)));
         return $string;
-      }
+    }
+
+    public static function DescricaoStatus($status)
+    {
+        $tipo = "";
+        switch ($status) {
+            case STATUS_ATIVO:
+                $tipo = "Ativo";
+                break;
+            case STATUS_INATIVO:
+                $tipo = "Inativo";
+                break;
+            
+        }
+        return $tipo;
+    }
+
+    public static function DescricaoTipo($tipo): string
+    {
+        $nome = "";
+        switch ($tipo) {
+            case PERFIL_ADM:
+                $nome = "Administrador";
+                break;
+            case PERFIL_FUNCIONARIO:
+                $nome = "Funcionário";
+                break;
+            case PERFIL_TECNICO:
+                $nome = "Técnico";
+                break;
+        }
+        return $nome;
+    }
 }

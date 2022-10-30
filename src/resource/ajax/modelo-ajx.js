@@ -38,6 +38,7 @@ function ConsultarModeloAjx() {
         },
         success: function (TabelaModelo) {
             $("#listaModelo").html(TabelaModelo);
+            RemoverLoad();
         }
     })
     return false;

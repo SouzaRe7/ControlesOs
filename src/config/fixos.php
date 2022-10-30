@@ -13,6 +13,7 @@ const ALTERAR_SETOR = "AlterarSetor";
 const ALTERAR_MODELO = "AlterarModelo";
 const ALTERAR_EQUIPAMENTO = "AlterarEquipamento";
 const ALTERAR_USUARIO = "AlterarUsuario";
+const MUDAR_STATUS = "MudarStatus";
 
 const EXCLUIR_TIPO_EQUIPAMENTO = "ExcluirTipoEquipamento";
 const EXCLUIR_SETOR = "ExcluirSetor";

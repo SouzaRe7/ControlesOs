@@ -4,6 +4,7 @@ namespace Src\controller;
 
 use Src\_public\Util;
 use Src\model\usuarioDAO;
+use Src\VO\UsuarioVO;
 
 class UsuarioController
 {
@@ -11,6 +12,16 @@ class UsuarioController
     public function __construct()
     {
         $this->dao = new usuarioDAO;
+    }
+
+    public function DetalharUsuarioCTRL($idUser)
+    {
+        return $this->dao->DetalharUsuarioDAO($idUser);
+    }
+
+    public function FiltrarUsuarioCTRL($nome)
+    {
+        return $this->dao->FiltrarUsuarioDAO($nome);
     }
 
     public function VerificarEmailDuplicadoCTRL($email, $id = '') : bool
@@ -39,5 +50,13 @@ class UsuarioController
         $vo->setIdLogado(Util::CodigoLogado());
 
         return $this->dao->CadastrarUsuarioDAO($vo);
+    }
+
+    public function MudarStatusCTRL(UsuarioVO $vo)
+    {
+        $vo->setStatus($vo->getStatus() == STATUS_ATIVO ? STATUS_INATIVO : STATUS_ATIVO);
+        $vo->setFuncaoErro(MUDAR_STATUS);
+        $vo->setIdLogado(Util::CodigoLogado());
+        return $this->dao->MudarStatusDAO($vo);
     }
 }

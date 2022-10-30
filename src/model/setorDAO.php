@@ -46,7 +46,7 @@ class setorDAO extends Conexao
         $sql->bindValue(1, $vo->getIdSetor());
         try {
             $sql->execute();
-            return -2;
+            return 1;
         } catch (Exception $ex) {
             $vo->setMsgErro($ex->getMessage());
             parent::GravarLogErro($vo);

@@ -12,7 +12,6 @@ $ctrl = new NovoEquipController();
 
 $id = '';
 if (isset($_GET['Cod']) and is_numeric($_GET['Cod'])) :
-
    $ctrlEquipamento = new NovoEquipController();
    $id = $_GET['Cod'];
    $dados = $ctrlEquipamento->DetalharEquipamentoCTRL($id);

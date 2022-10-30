@@ -47,7 +47,6 @@ function CadastrarNovoUsuarioAJX(idFrom)
                     case '1':
                         LimparCamposGenerico(idFrom);
                         MensagemSucesso();
-                        
                         break;
                     case '-1':
                         MensagemErro();
@@ -57,4 +56,43 @@ function CadastrarNovoUsuarioAJX(idFrom)
         })         
     }
     return false;
+}
+
+function FiltrarUsuarioAJX(nomeFiltro)
+{
+    $.ajax({
+        type: 'post',
+        url: BASE_URL_AJAX("usuario_dataview"),
+        data: {
+            nome: nomeFiltro,
+            filtrarPessoa: 'ajx'
+        },
+        success: function(Filtrar){
+            $("#listaPessoas").html(Filtrar);
+            $("#divPessoa").show();
+        }
+    })
+}
+
+function MudarStatus()
+{
+    $.ajax({
+        type: 'post',
+        url: BASE_URL_AJAX("usuario_dataview"),
+        data:{
+            mudarStatus: 'ajx',
+            idStatus: $("#idStatus").val(),
+            statusAtual: $("#statusAtual").val()
+        },
+        success: function(ret){
+            if (ret == 1){
+                MensagemSucesso();
+                FiltrarUsuarioAJX($("#nome").val());
+                $("#modal-status").modal("hide");
+            }else{
+                MensagemErro();
+            }
+
+        }
+    })
 }

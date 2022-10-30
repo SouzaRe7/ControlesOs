@@ -1,5 +1,5 @@
 <?php
-require_once dirname(__DIR__, 3) . '/vendor/autoload.php';
+require_once dirname(__DIR__, 2) . '/resource/dataview/usuario_dataview.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -49,42 +49,22 @@ require_once dirname(__DIR__, 3) . '/vendor/autoload.php';
                     <div class="card-body">
                         <div class="row">
                             <div class="form-group col-md-12">
-                                <label>Pesquisar por tipo</label>
-                                <input id="admPesquise" name="admPesquise" class="form-control" placeholder="Digite aqui">
+                                <label>Pesquisar pelo nome</label>
+                                <input onkeyup="FiltrarUsuarioAJX(this.value)" id="nome" name="nome" class="form-control" placeholder="Digite aqui">
                             </div>
-                            <div class="form-group col-md-4">
-                                <button name="btnPesquisar" type="button" class="btn btn-block bg-gradient-primary">Pesquisar</button>
                             </div>
                         </div>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body ocultar" id="divPessoa">
                         <div class="row">
                             <div class="col-12">
                                 <div class="card">
                                     <div class="card-header">
-                                        <h3 class="card-title">Equipamento cadastrados</h3>
+                                        <h3 class="card-title">Pessoas encontradas</h3>
                                     </div>
                                     <!-- /.card-header -->
                                     <div class="card-body table-responsive p-0">
-                                        <table class="table table-hover">
-                                            <thead>
-                                                <tr>
-                                                    <th>Ação</th>
-                                                    <th>Nome</th>
-                                                    <th>Setor</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <a href="#" class="btn btn-warning btn-xs">Alterar</a>
-                                                        <a href="#" class="btn btn-danger btn-xs">Excluir</a>
-                                                    </td>
-                                                    <td>(nome)</td>
-                                                    <td>(setor)</td>
-                                                </tr>
-
-                                            </tbody>
+                                        <table class="table table-hover" id="listaPessoas">
                                         </table>
                                     </div>
                                     <!-- /.card-body -->
@@ -92,11 +72,10 @@ require_once dirname(__DIR__, 3) . '/vendor/autoload.php';
                                 <!-- /.card -->
                             </div>
                         </div>
+                        <?php include_once 'modal/modalMudarStatus.php';?>
                     </div>
-
                 </div>
                 <!-- /.card -->
-
             </section>
             <!-- /.content -->
         </div>
@@ -110,7 +89,9 @@ require_once dirname(__DIR__, 3) . '/vendor/autoload.php';
     </div>
     <!-- ./wrapper -->
 
-    <?php include_once PATH_URL . '/template/_includes/_script.php' ?>
+    <?php include_once PATH_URL . '/template/_includes/_script.php'; include_once PATH_URL . '/template/_includes/_msg.php'; ?>
+    <script src="../../resource/ajax/usuario-ajx.js"></script>
+    <script src="../../resource/js/funcoes.js"></script>
 </body>
 
 </html>

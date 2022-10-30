@@ -60,7 +60,11 @@ function CarregarModalExcluir(id, nome) {
     $("#modalExcluirID").val(id);
     $("#modalExcluirNome").html(nome);
 }
-
+function CarregarModalStatus(id, nome, statusAtual) {
+    $("#idStatus").val(id);
+    $("#statusAtual").val(statusAtual);
+    $("#nomeUserStatus").html(nome);
+}
 function LimparNotificarCamposGenerico(form_id){
 
     $("#" + form_id + " input, select, textarea ").each(function () {

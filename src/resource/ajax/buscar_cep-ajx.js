@@ -6,7 +6,6 @@ function limpa_formulario_cep() {
     $("#uf").val("");
 }
 function TravarCamposEndereco(readonly){
-
     $("#cidade").attr("readonly",readonly);
     $("#uf").attr("readonly",readonly);  
 }

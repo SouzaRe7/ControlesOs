@@ -36,6 +36,7 @@ function ConsultarTipoEquipamentoAjx() {
         },
         success: function (Tabela) {
             $("#lista").html(Tabela);
+            RemoverLoad();
         }
     })
 

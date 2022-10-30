@@ -286,3 +286,51 @@ HORA: 23:34:21
 FUNÇÃO: ExcluirTipoEquipamento
 COD. LOGADO: 1
 ERRO: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_os`.`tb_equipamento`, CONSTRAINT `fk_tb_equipamento_tb_tipoequip1` FOREIGN KEY (`tipoequip_id`) REFERENCES `tb_tipoequip` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+--------------------------------------------------------
+DATA: 30/10/2022
+HORA: 14:00:08
+FUNÇÃO: CadastroUsuario
+COD. LOGADO: 1
+ERRO: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_endereco`, CONSTRAINT `fk_tb_endereco_tb_cidade1` FOREIGN KEY (`cidade_id`) REFERENCES `tb_cidade` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+--------------------------------------------------------
+DATA: 30/10/2022
+HORA: 16:21:54
+FUNÇÃO: CadastroUsuario
+COD. LOGADO: 1
+ERRO: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'cidade_id' cannot be null
+--------------------------------------------------------
+DATA: 30/10/2022
+HORA: 16:27:50
+FUNÇÃO: CadastroUsuario
+COD. LOGADO: 1
+ERRO: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'cidade_id' cannot be null
+--------------------------------------------------------
+DATA: 30/10/2022
+HORA: 16:28:41
+FUNÇÃO: CadastroUsuario
+COD. LOGADO: 1
+ERRO: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'cidade_id' cannot be null
+--------------------------------------------------------
+DATA: 30/10/2022
+HORA: 16:34:31
+FUNÇÃO: CadastroUsuario
+COD. LOGADO: 1
+ERRO: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'cidade_id' cannot be null
+--------------------------------------------------------
+DATA: 30/10/2022
+HORA: 16:36:54
+FUNÇÃO: CadastroUsuario
+COD. LOGADO: 1
+ERRO: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'cidade_id' cannot be null
+--------------------------------------------------------
+DATA: 30/10/2022
+HORA: 16:38:02
+FUNÇÃO: CadastroUsuario
+COD. LOGADO: 1
+ERRO: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'cidade_id' cannot be null
+--------------------------------------------------------
+DATA: 30/10/2022
+HORA: 16:40:04
+FUNÇÃO: CadastroUsuario
+COD. LOGADO: 1
+ERRO: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'cidade_id' cannot be null

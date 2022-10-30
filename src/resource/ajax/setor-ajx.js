@@ -37,6 +37,7 @@ function ConsultarSetorAjx() {
         },
         success: function (Tabela) {
             $("#lista").html(Tabela);
+            RemoverLoad();
         }
     })
 }
@@ -56,14 +57,12 @@ function AlterarSetorAJAX(id_form) {
                 modalSetorNome: nome
             },
             success: function (ret) {
-
                 $("#modal-setor").modal("hide");
-
+                ConsultarSetorAjx();
                 switch (ret) {
                     case '1':
                         MensagemSucesso();
                         //LimparCamposGenerico(id_form);
-                        ConsultarSetorAjx();
                         break;
                     case '-1':
                         MensagemErro();
