@@ -3,7 +3,25 @@
 namespace Src\model\SQL;
 
 class UsuarioSQL{
+
+    public static function UPDATE_USUARIO_SQL()
+    {
+        $sql = "UPDATE tb_usuario SET nome = ?, login = ?, senha = ?, status = ?, fone = ? WHERE id = ?";
+        return $sql;
+    }
     
+    public static function UPDATE_TECNICO_SQL()
+    {
+        $sql = "UPDATE tb_tecnico SET empresa_tecnico = ? WHERE tecnico_id = ?";
+        return $sql;
+    }
+
+    public static function UPDATE_FUNCIONARIO_SQL()
+    {
+        $sql = "UPDATE tb_funcionario SET setor_id = ? WHERE funcionario_id = ? ";
+        return $sql;
+    }
+
     public static function CADASTRAR_USUARIO_SQL()
     {
        $sql = "INSERT INTO tb_usuario (tipo, nome, login, senha, status, fone) VALUES (?,?,?,?,?,?)";

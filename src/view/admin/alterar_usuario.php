@@ -49,7 +49,7 @@ require_once dirname(__DIR__, 2) . '/resource/dataview/usuario_dataview.php';
                     <div class="card-body">
                         <form action="alterar_usuario.php" method="post" id="idForm">
                             <div class="row">
-                                <input type="hidden" id="tipo" name="tipo" value="<?= $user['tipo']?>">                                
+                                <input type="hidden" id="Tipo" name="Tipo" value="<?= $user['tipo']?>">                                
                                 <input type="hidden" id="idUser" name="idUser" value="<?= $id ?>">
                                 <input type="hidden" id="idEnd" name="idEnd" value="<?= $user['id_end']?>">                            
                                 <div class="form-group col-md-12" id="divNome">
@@ -106,8 +106,8 @@ require_once dirname(__DIR__, 2) . '/resource/dataview/usuario_dataview.php';
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group ocultar" id="divButton">
-                                <button onclick="return CadastrarNovoUsuarioAJX('idForm')" name="btnGravar" id="btnGravar" type="button" class="btn btn-block btn-primary col-md-4">Gravar</button>
+                            <div class="form-group" id="divButton">
+                                <button onclick="return AlterarUsuarioAJX('idForm')" name="btnAlterar" id="btnAlterar" type="button" class="btn btn-block btn-primary col-md-4">Alterar</button>
                             </div>
                         </form>
                     </div>

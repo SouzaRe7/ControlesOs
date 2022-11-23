@@ -66,6 +66,12 @@
                     <p>Alocar Equipamento</p>
                   </a>
                 </li>
+                <li class="nav-item">
+                  <a href="remover_equipamento.php" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Remover Equipamento</p>
+                  </a>
+                </li>
               </ul>
             </li>
             <li class="nav-item has-treeview">

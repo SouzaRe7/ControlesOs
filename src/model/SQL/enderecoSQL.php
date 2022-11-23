@@ -40,5 +40,16 @@ class EnderecoSQL{
         return $sql;
     }
 
+    public static function UPDATE_CIDADE_SQL()
+    {
+        $sql = "UPDATE tb_cidade SET nome_cidade = ?, estado_id = ? WHERE id = ?";
+        return $sql;
+    }
+
+    public static function UPDATE_ESTADO_SQL()
+    {
+        $sql = "UPDATE tb_estado SET sigla_estado = ? WHERE id = ?";
+        return $sql;
+    }
 }
 ?>

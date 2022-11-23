@@ -1,5 +1,5 @@
 <?php
-require_once dirname(__DIR__, 3) . '/vendor/autoload.php';
+require_once dirname(__DIR__, 2) . '/resource/dataview/remover_dataview.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -50,16 +50,16 @@ require_once dirname(__DIR__, 3) . '/vendor/autoload.php';
                         <div class="row">
                             <div class="form-group col-md-12">
                                 <label>Setor</label>
-                                <select id="admSetor" name="admSetor" class="form-control select2" style="width: 100%;">
+                                <select id="setor" name="setor" class="form-control" onchange="CarregarEqSetor()">
                                     <option value="">Selecione</option>
+                                    <?php foreach ($setores as $s) :?>
+                                        <option value="<?= $s['id'] ?>"><?= $s['nome_setor']?></option>
+                                    <?php endforeach;?>
                                 </select>
-                            </div>
-                            <div class="form-group col-md-4">
-                                <button name="btnProcurar" type="button" class="btn btn-block bg-gradient-primary">Procurar</button>
                             </div>
                         </div>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body ocultar" id="divResult">
                         <div class="row">
                             <div class="col-12">
                                 <div class="card">
@@ -68,23 +68,10 @@ require_once dirname(__DIR__, 3) . '/vendor/autoload.php';
                                     </div>
                                     <!-- /.card-header -->
                                     <div class="card-body table-responsive p-0">
-                                        <table class="table table-hover">
-                                            <thead>
-                                                <tr>
-                                                    <th>Ação</th>
-                                                    <th>Equipamento</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <a href="#" class="btn btn-danger btn-xs">Excluir</a>
-                                                    </td>
-                                                    <td>(equipamento)</td>
-                                                </tr>
-
-                                            </tbody>
+                                        <table class="table table-hover" id="tableResult">
+                                            
                                         </table>
+                                            <?php include_once 'modal/modalRemoverEqSetor.php'; ?>
                                     </div>
                                     <!-- /.card-body -->
                                 </div>
@@ -109,7 +96,9 @@ require_once dirname(__DIR__, 3) . '/vendor/autoload.php';
     </div>
     <!-- ./wrapper -->
 
-    <?php include_once PATH_URL . '/template/_includes/_script.php' ?>
+    <?php include_once PATH_URL . '/template/_includes/_script.php';
+    include_once PATH_URL . '/template/_includes/_msg.php'; ?>
+    <script src="../../resource/ajax/equipamento-ajx.js"></script>
 </body>
 
 </html>

@@ -334,3 +334,39 @@ HORA: 16:40:04
 FUNÇÃO: CadastroUsuario
 COD. LOGADO: 1
 ERRO: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'cidade_id' cannot be null
+--------------------------------------------------------
+DATA: 31/10/2022
+HORA: 22:30:17
+FUNÇÃO: CadastroUsuario
+COD. LOGADO: 1
+ERRO: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_endereco`, CONSTRAINT `fk_tb_endereco_tb_cidade1` FOREIGN KEY (`cidade_id`) REFERENCES `tb_cidade` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+--------------------------------------------------------
+DATA: 02/11/2022
+HORA: 16:46:14
+FUNÇÃO: AlterarUsuario
+COD. LOGADO: 1
+ERRO: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+--------------------------------------------------------
+DATA: 02/11/2022
+HORA: 18:22:20
+FUNÇÃO: AlterarUsuario
+COD. LOGADO: 1
+ERRO: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+--------------------------------------------------------
+DATA: 02/11/2022
+HORA: 18:27:22
+FUNÇÃO: AlterarUsuario
+COD. LOGADO: 1
+ERRO: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+--------------------------------------------------------
+DATA: 05/11/2022
+HORA: 13:51:06
+FUNÇÃO: AlterarUsuario
+COD. LOGADO: 1
+ERRO: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+--------------------------------------------------------
+DATA: 05/11/2022
+HORA: 14:06:24
+FUNÇÃO: AlterarUsuario
+COD. LOGADO: 1
+ERRO: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens

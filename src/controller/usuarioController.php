@@ -29,6 +29,25 @@ class UsuarioController
         return $this->dao->VerificarEmailDuplicadoDAO($id,$email);
     }
     
+    public function AlterarUsuarioCTRL($vo)
+    {
+        if (empty($vo->getTipo()) Or empty($vo->getNome()) Or empty($vo->getFone()) Or empty($vo->getLogin()) Or empty($vo->getRua()) Or empty($vo->getBairro()) Or empty($vo->getCep()) Or empty($vo->getNomeCidade()) Or empty($vo->getSiglaEstado())) :
+            return 0;
+        endif;
+        if($vo->getTipo() == PERFIL_FUNCIONARIO):
+            if(empty($vo->getIdSetor()))
+            return 0;
+        elseif($vo->getTipo() == PERFIL_TECNICO)
+            if(empty($vo->getNomeEmpresa()))
+            return 0;
+        endif;
+        $vo->setStatus(STATUS_ATIVO);
+        $vo->setSenha(Util::CriarSenha($vo->getLogin()));
+        $vo->setFuncaoErro(ALTERAR_USUARIO);
+        $vo->setIdlogado(Util::CodigoLogado());
+        return $this->dao->AlterarUsuarioDAO($vo);    
+    }
+    
     public function CadastrarUsuarioCTRL($vo)
     {
         if(empty($vo->getTipo()) Or empty($vo->getNome()) Or empty($vo->getFone()) Or empty($vo->getLogin()) Or empty($vo->getRua()) Or empty($vo->getBairro()) Or empty($vo->getCep()) Or empty($vo->getNomeCidade()) Or empty($vo->getSiglaEstado())):

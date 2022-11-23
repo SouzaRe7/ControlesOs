@@ -20,6 +20,7 @@ const EXCLUIR_SETOR = "ExcluirSetor";
 const EXCLUIR_MODELO = "ExcluirModelo";
 const EXCLUIR_EQUIPAMENTO = "ExcluirEquipamento";
 const EXCLUIR_USUARIO = "ExcluirUsuario";
+const REMOVER_EQUIPAMENTO_SETOR = "RemoverEquipamentoSetor";
 
 #dados combo filtro
 const FILTRO_TIPO = 1;

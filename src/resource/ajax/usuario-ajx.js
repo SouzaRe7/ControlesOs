@@ -45,8 +45,50 @@ function CadastrarNovoUsuarioAJX(idFrom)
                 RemoverLoad();
                 switch (ret) {
                     case '1':
-                        LimparCamposGenerico(idFrom);
+                        //LimparCamposGenerico(idFrom);
                         MensagemSucesso();
+                        //ChamarOutraPagina("novo_usuario");
+                        break;
+                    case '-1':
+                        MensagemErro();
+                        break;
+                }
+            } 
+        })         
+    }
+    return false;
+}
+
+function AlterarUsuarioAJX(idFrom)
+{
+    if(NotificarCamposGenerico(idFrom)){
+        $.ajax({
+            type: 'post',
+            url: BASE_URL_AJAX("usuario_dataview"),
+            data:{
+                btnAlterar: 'ajx',
+                Tipo: $("#Tipo").val(),         
+                Nome: $("#Nome").val(), 
+                Setor: $("#Setor").val(), 
+                Emp: $("#Emp").val(), 
+                Email: $("#Email").val(), 
+                Fone: $("#Fone").val(), 
+                cep: $("#cep").val(), 
+                rua: $("#rua").val(), 
+                bairro: $("#bairro").val(), 
+                cidade: $("#cidade").val(), 
+                uf: $("#uf").val(),
+                idEnd: $("#idEnd").val(),
+                idUser: $("#idUser").val()
+            },
+            success: function(ret)
+            {   
+                RemoverLoad();
+                switch (ret) {
+                    case '1':
+                        //LimparCamposGenerico(idFrom);
+                        MensagemSucesso();
+                        //ChamarOutraPagina("consultar_usuario");
                         break;
                     case '-1':
                         MensagemErro();

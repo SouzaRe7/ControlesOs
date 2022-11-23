@@ -65,10 +65,6 @@ require_once dirname(__DIR__, 2) . '/resource/dataview/usuario_dataview.php';
                                 <div class="form-group ocultar col-md-12" id="divFunc">
                                     <label>Setor</label>
                                     <select id="Setor" name="Setor" class="form-control">
-                                        <option value="">Selecione</option>
-                                        <?php foreach ($setor as $s) : ?>
-                                            <option value="<?= $s['id'] ?>"><?= $s['nome_setor'] ?></option>
-                                        <?php endforeach; ?>
                                     </select>
                                 </div>
                                 <div class="form-group ocultar col-md-12" id="divEmp">

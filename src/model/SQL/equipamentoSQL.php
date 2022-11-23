@@ -13,7 +13,16 @@ class EquipamentoSQL
     }
     public static function FILTRAR_EQUIPAMENTO($tipo_filtro)
     {
-        $sql = 'SELECT equip.id, equip.identificacao, equip.descricao, tbTipo.nome AS nomeTipo, tbModelo.nome AS nomeModelo FROM tb_equipamento AS equip INNER JOIN tb_tipoequip AS tbTipo ON equip.tipoequip_id = tbTipo.id INNER JOIN tb_modelo AS tbModelo ON equip.modelo_id = tbModelo.id ';
+        $sql = 'SELECT equip.id, 
+                       equip.identificacao, 
+                       equip.descricao, 
+                       tbTipo.nome AS nomeTipo, 
+                       tbModelo.nome AS nomeModelo 
+                  FROM tb_equipamento AS equip 
+            INNER JOIN tb_tipoequip AS tbTipo 
+                    ON equip.tipoequip_id = tbTipo.id 
+            INNER JOIN tb_modelo AS tbModelo 
+                    ON equip.modelo_id = tbModelo.id ';
 
         switch ($tipo_filtro) {
 
@@ -72,4 +81,38 @@ class EquipamentoSQL
         return $sql;
     }
 
+    public static function SELECT_EQUIPAMENTO_DO_SETOR_ALOCADO_SQL()
+    {
+        $sql = "SELECT  al.id AS alocID, 
+                        situacao, 
+                        data_alocacao, 
+                        setor_id, 
+                        nome_setor,
+                        tipoe.nome AS TipoEnome,
+                        mo.nome AS nomeMo,
+                        equipamento_id,
+                        eq.tipoequip_id,
+                        eq.modelo_id,
+                        eq.identificacao
+                  FROM  tb_alocar AS al
+            INNER JOIN  tb_setor AS tbs
+                    ON  tbs.id = setor_id
+            INNER JOIN  tb_equipamento AS eq
+                    ON  eq.id = equipamento_id
+            INNER JOIN  tb_tipoequip AS tipoe
+                    ON  tipoe.id = tipoequip_id
+            INNER JOIN  tb_modelo AS mo
+                    ON  mo.id = modelo_id
+                 WHERE  situacao = ? AND setor_id = ?";
+        return $sql;
+    }
+
+    public static function REMOVER_EQUIPAMENTO_SETOR_SQL()
+    {
+        $sql = "UPDATE tb_alocar
+                   SET situacao = ?,
+                       data_remocao = ?
+                 WHERE id = ?";
+        return $sql;
+    }
 }

@@ -7,6 +7,9 @@ function RemoverLoad() {
 function BASE_URL_AJAX(dataview) {
     return "../../resource/dataview/" + dataview + ".php";
 }
+function ChamarOutraPagina(pagina){
+    window.location.replace(pagina + ".php");
+}
 function NotificarCampo(nome_id) {
     if ($("#" + nome_id).val().trim() == '')
         $("#" + nome_id).addClass("is-invalid");
@@ -56,6 +59,10 @@ function CarregarAlteracaoModelo(id, nome) {
     $("#modalModeloID").val(id);
     $("#modalModeloNome").val(nome);
 }
+function CarregarModalRemover(id, nome) {
+    $("#modalRemoverID").val(id);
+    $("#modalRemoverNome").html(nome);
+}
 function CarregarModalExcluir(id, nome) {
     $("#modalExcluirID").val(id);
     $("#modalExcluirNome").html(nome);
@@ -70,6 +77,20 @@ function LimparNotificarCamposGenerico(form_id){
     $("#" + form_id + " input, select, textarea ").each(function () {
         $(this).removeClass("is-invalid");
         $(this).removeClass("is-valid");
+    })
+}
+
+function CarregarSetores()
+{
+    $.ajax({
+        type: "post",
+        url: BASE_URL_AJAX("usuario_dataview"),
+        data: {
+            carregaSetor: "ajx"
+        },
+        success: function (dados) {
+            $("#Setor").html(dados);
+        }
     })
 }
 
@@ -96,6 +117,7 @@ function EscolherUsuario(tipo,form_id) {
             $("#divButton").show();
             $("#admSetor").hasClass("obg");
             $("#divEmp").removeClass("obg");
+            CarregarSetores();
             break;
 
         case '3':

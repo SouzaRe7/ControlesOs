@@ -51,6 +51,14 @@ class Util
         return date('Y-d-m');
     }
 
+    public static function FormatarDataExibir($d) {
+        return explode('-', $d)[2] . '/' . explode('-', $d)[1] . '/' . explode('-', $d)[0];
+    }
+
+    public static function FormatarHoraExibir($h) {
+        return explode(':', $h)[0] . ':' . explode(':', $h)[1];
+    }
+
     public static function CriarSenha($senha)
     {
         $senhaArray = explode('@', $senha);

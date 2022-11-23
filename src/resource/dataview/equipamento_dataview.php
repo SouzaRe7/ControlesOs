@@ -6,7 +6,6 @@ use Src\VO\EquipamentoVO;
 use Src\controller\TipoEquipController;
 use Src\controller\ModeloController;
 use Src\controller\NovoEquipController;
-use Src\model\SQL\TipoEquipamento;
 
 $ctrl = new NovoEquipController();
 
@@ -88,6 +87,8 @@ elseif (isset($_POST['btnPesquisar'])) :
 else :
    $tipoEquipamentosCTRL = new TipoEquipController();
    $modeloCTRL = new ModeloController();
+  
    $dadosTipoEquipamentos = $tipoEquipamentosCTRL->SelecioneTipoEquipamentoCtrl();
    $dadosModelo = $modeloCTRL->SelecioneModeloCtrl();
+
 endif;

@@ -115,3 +115,47 @@ function Excluir() {
     })
     return false;
 }
+
+function RemoverEquipamentoSetor() {
+    let id = $("#modalRemoverID").val();
+    $.ajax({
+        type: "post",
+        url: BASE_URL_AJAX("remover_dataview"),
+        data: {
+            btnRemover: "ajx",
+            id_alocar: id
+        },
+        success: function (ret) {
+            switch (ret) {
+                case '1':
+                    alert(ret);
+                    $("#modal-RemoverEqSetor").modal("hide");
+                    MensagemSucesso();
+                    CarregarEqSetor();
+                    //LimparCamposGenerico(id_form); 
+                    break;
+                case '-1':
+                    MensagemErro();
+                    break;
+            }
+        }
+    })
+    return false;
+}
+
+function CarregarEqSetor(){
+    let id_setor_tela = $("#setor").val();
+    $.ajax({
+        type: "post",
+        url: BASE_URL_AJAX("remover_dataview"),
+        data: {
+            filtrar_equipamento_setor: "ajx",
+            idSetor: id_setor_tela
+        },
+        success: function (dados) {
+            $("#tableResult").html(dados);
+            $("#divResult").show();
+        }
+    })
+    return false;
+}

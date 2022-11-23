@@ -6,6 +6,7 @@ use Src\_public\Util;
 use Src\model\EquipamentoDAO;
 use Src\VO\AlocarVO;
 use Src\VO\EquipamentoVO;
+use Src\VO\SetorVO;
 
 class NovoEquipController
 {
@@ -62,6 +63,22 @@ class NovoEquipController
     public function SelectAlocarEquipamentoCTRL()
     {
         return $this->dao->SelectEquipamentoDAO();
+    }
+
+    public function SelecionarEquipamentoSetorAlocadoCTRL($idSetor)
+    {
+        return $this->dao->SelecionarEquipamentoSetorAlocadoDAO(SITUACAO_ALOCAR_EQUIPAMENTO, $idSetor);
+    }
+
+    public function RemoverEquipamentoSetorCTRL(AlocarVO $vo): int
+    {
+        $vo->setSituacao(SITUACAO_REMOVER_EQUIPAMENTO);
+        $vo->setDataRemocao(Util::DataAtual());
+
+        $vo->setFuncaoErro(REMOVER_EQUIPAMENTO_SETOR);
+        $vo->setIdlogado(Util::CodigoLogado());
+
+        return $this->dao->RemoverEquipamentoSetorDAO($vo);
     }
 
     public function InsertAlocarEquipamentoCTRL(AlocarVO $vo)
