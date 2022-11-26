@@ -78,4 +78,22 @@ class UsuarioController
         $vo->setIdLogado(Util::CodigoLogado());
         return $this->dao->MudarStatusDAO($vo);
     }
+
+    public function VerificarLoginAcessoCTRL($login, $senha)
+    {
+        if(empty($login) Or empty($senha))
+            return 0;
+
+        $usuario = $this->dao->VerificarLoginAcessoDAO($login, STATUS_ATIVO);
+        # Testa a variavel para ver se encontrou o usuario com o login digitado
+        if(empty($usuario))
+            return -4;
+        # Teste a senha digitada, se bate com a senha criptografada do BD
+        if(!Util::ValidarSenhaBanco($senha, $usuario['senha']));
+        return -5;
+
+        Util::CriarSessao($usuario['id'], $usuario['nome']);
+        Util::ChamarPagina('consultar_usuario.php');
+        
+    }
 }

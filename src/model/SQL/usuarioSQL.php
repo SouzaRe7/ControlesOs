@@ -92,5 +92,17 @@ class UsuarioSQL{
                 WHERE  usu.id = ?";
         return $sql;
     }
+
+    public static function BUSCAR_DADOS_ACESSO_SQL()
+    {
+        $sql = "SELECT  id, 
+                        nome, 
+                        senha
+                  FROM  tb_usuario
+                 WHERE  login = ? AND status = ?";
+        return $sql;
+    }
 }
+
+
 ?>

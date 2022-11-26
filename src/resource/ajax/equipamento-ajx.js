@@ -49,14 +49,11 @@ function AlocarEquipamentoAjx(id_form) {
                 admSetor: idSetor
             },
             success: function (ret) {
-                switch (ret) {
-                    case '1':
-                        MensagemSucesso();
-                        LimparCamposGenerico(id_form);
-                        break;
-                    case '-1':
-                        MensagemErro();
-                        break;
+                if(ret == 1){
+                    MensagemSucesso();
+                    LimparCamposGenerico(id_form);
+                }else{
+                    MensagemErro();
                 }
             }
         })
@@ -126,17 +123,13 @@ function RemoverEquipamentoSetor() {
             id_alocar: id
         },
         success: function (ret) {
-            switch (ret) {
-                case '1':
-                    alert(ret);
-                    $("#modal-RemoverEqSetor").modal("hide");
-                    MensagemSucesso();
-                    CarregarEqSetor();
-                    //LimparCamposGenerico(id_form); 
-                    break;
-                case '-1':
-                    MensagemErro();
-                    break;
+            if(ret == 1){
+                $("#modal-RemoverEqSetor").modal("hide");
+                MensagemSucesso();
+                CarregarEqSetor();
+                //LimparCamposGenerico(id_form);
+            }else{
+                MensagemErro();
             }
         }
     })

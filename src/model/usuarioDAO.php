@@ -20,6 +20,16 @@ class usuarioDAO extends Conexao
         $this->conexao = parent::retornaConexao();
     }
 
+    public function VerificarLoginAcessoDAO($login, $status)
+    {
+        $sql = $this->conexao->prepare(UsuarioSQL::BUSCAR_DADOS_ACESSO_SQL($login));
+        $i = 1;
+        $sql->bindValue($i++, $login);
+        $sql->bindValue($i++, $status);
+        $sql->execute();
+        return $sql->fetch(\PDO::FETCH_ASSOC);
+    }
+
     public function DetalharUsuarioDAO($idUser)
     {
         $sql = $this->conexao->prepare(UsuarioSQL::DETALHAR_USUARIO_SQL());

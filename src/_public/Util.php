@@ -4,6 +4,52 @@ namespace Src\_public;
 
 class Util
 {
+    public static function IniciarSessao()
+    {
+        if(!isset($_SESSION))
+            session_start();
+    }
+
+    public static function CriarSessao($id, $nome)
+    {
+        self::IniciarSessao();
+        $_SESSION["id"] = $id;
+        $_SESSION["nome"] = $nome;
+    }
+
+    public static function CodigoLogado()
+    {
+        self::IniciarSessao();
+        return $_SESSION["id"];
+        //return 1;
+    }
+
+    public static function NomeLogado()
+    {
+        self::IniciarSessao();
+        return $_SESSION["nome"];
+    }
+
+    public static function Deslogar()
+    {
+        self::IniciarSessao();
+        unset($_SESSION["id"]);
+        unset($_SESSION["nome"]);
+        self::IrParaLogin();   
+    }
+
+    public static function IrParaLogin()
+    {
+        header('location: login.php');
+        exit;
+    }
+
+    public static function VerificarLogin()
+    {
+        self::IniciarSessao();
+        if(!isset($_SESSION['id']))
+            self::IrParaLogin();
+    }
 
     public static function Mostrar($p)
     {
@@ -12,14 +58,8 @@ class Util
         echo '</pre>';
     }
 
-    public static function CodigoLogado()
-    {
-        return 1;
-    }
-
     public static function TratarDados($palavra)
     {
-
         return strip_tags(trim($palavra));
     }
 
@@ -63,6 +103,11 @@ class Util
     {
         $senhaArray = explode('@', $senha);
         return password_hash($senhaArray[0], PASSWORD_DEFAULT);
+    }
+
+    public static function ValidarSenhaBanco($senha, $senha_hash)
+    {
+        return password_verify($senha, $senha_hash);
     }
 
     public static function remove_especial_char($string)

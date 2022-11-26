@@ -145,4 +145,6 @@ elseif (isset($_GET['id_user']) and is_numeric($_GET['id_user'])) :
     if ($user['tipo'] == PERFIL_FUNCIONARIO) :
         $setor = $setorCTRL->SelecioneSetorCtrl();
     endif;
+elseif (isset($_POST['btnAcessar'])) :
+    $ret = $usuarioCTRL->VerificarLoginAcessoCTRL($_POST['login'], $_POST['senha']);    
 endif; ?>

@@ -4,6 +4,16 @@ function RetornarMsg(n) {
 
     switch (n) {
         
+        case -5:
+
+            msg = "Senha invalida!";
+
+            break;
+        case -4:
+
+            msg = "O login é invalido!";
+
+            break;
         case -3:
 
             msg = "Não foi encontrado nenhum registro!";
@@ -32,6 +42,12 @@ function RetornarMsg(n) {
 
     }
     return msg;
+}
+function MensagemSenhaInvalida() {
+    toastr.warning(RetornarMsg(-5));
+}
+function MensagemLoginInvalida() {
+    toastr.warning(RetornarMsg(-4));
 }
 function MensagemVazio() {
     toastr.info(RetornarMsg(-3));

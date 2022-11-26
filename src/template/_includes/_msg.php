@@ -1,6 +1,17 @@
 <?php
 if (isset($ret)) {
     switch ($ret):
+        
+        case -5:
+            echo '<script>
+            MensagemSenhaInvalida();
+            </script>';
+            break;
+        case -4:
+            echo '<script>
+            MensagemLoginInvalida();
+            </script>';
+            break;
         case -3:
             echo '<script>
             MensagemVazio();
