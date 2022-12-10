@@ -20,16 +20,12 @@ function CadastrarEquipamentoAjx(id_form) {
                 cod: cod
             },
             success: function (ret) {
-
-                switch (ret) {
-                    case '1':
-                        MensagemSucesso();
-                        if ($("#cod").val() == "")
-                            LimparCamposGenerico(id_form);
-                        break;
-                    case '-1':
-                        MensagemErro();
-                        break;
+                if(ret == 1){
+                    MensagemSucesso();
+                    if ($("#cod").val() == "")
+                        LimparCamposGenerico(id_form);
+                }else{
+                    MensagemErro();
                 }
             }
         })
@@ -99,14 +95,11 @@ function Excluir() {
         },
         success: function (ret) {
             $("#modal-excluir").modal("hide");
-            switch (ret) {
-                case '1':
-                    MensagemSucesso();
-                    //LimparCamposGenerico(id_form); 
-                    break;
-                case '-1':
-                    MensagemExcluirUso();
-                    break;
+            if(ret == 1){
+                MensagemSucesso();
+                //LimparCamposGenerico(id_form);
+            }else{
+                MensagemExcluirUso();
             }
         }
     })

@@ -20,7 +20,7 @@ class Util
     public static function CodigoLogado()
     {
         self::IniciarSessao();
-        return $_SESSION["id"];
+        return isset($_SESSION["id"]) ? $_SESSION["id"] : 0;
         //return 1;
     }
 

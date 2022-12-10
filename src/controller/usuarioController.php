@@ -44,7 +44,7 @@ class UsuarioController
         $vo->setStatus(STATUS_ATIVO);
         $vo->setSenha(Util::CriarSenha($vo->getLogin()));
         $vo->setFuncaoErro(ALTERAR_USUARIO);
-        $vo->setIdlogado(Util::CodigoLogado());
+        $vo->setIdlogado(Util::CodigoLogado() == 0 ? $vo->getId() : Util::CodigoLogado());
         return $this->dao->AlterarUsuarioDAO($vo);    
     }
     

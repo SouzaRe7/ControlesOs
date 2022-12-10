@@ -12,14 +12,11 @@ function CadastrarTipoEquipamentoAjx(id_form) {
             success: function (ret) {
                 RemoverLoad();
                 ConsultarTipoEquipamentoAjx();
-                switch (ret) {
-                    case '1':
-                        MensagemSucesso();
-                        LimparCamposGenerico(id_form);
-                        break;
-                    case '-1':
-                        MensagemErro();
-                        break;
+                if(ret == '1'){
+                    MensagemSucesso();
+                    LimparCamposGenerico(id_form);
+                }else if (ret == '-1'){
+                    MensagemErro();
                 }
             }
         })
