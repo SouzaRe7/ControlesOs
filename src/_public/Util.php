@@ -88,7 +88,7 @@ class Util
     public static function GravaDataAtual()
     {
         self::SetarFusoHorario();
-        return date('Y-d-m');
+        return date('Y-m-d');
     }
 
     public static function FormatarDataExibir($d) {
