@@ -7,6 +7,7 @@ const CADASTRO_MODELO = "CadastrarModelo";
 const CADASTRO_EQUIPAMENTO = "CadastroEquipamento";
 const CADASTRO_ALOCAR_EQUIPAMENTO = "CadastroAlocarEquipamento";
 const CADASTRO_USUARIO = "CadastroUsuario";
+const ABRIR_CHAMADO = "AbrirChamado";
 
 const ALTERAR_TIPO_EQUIPAMENTO = "AlterarTipoEquipamento";
 const ALTERAR_SETOR = "AlterarSetor";

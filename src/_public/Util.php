@@ -85,6 +85,12 @@ class Util
         exit;
     }
 
+    public static function GravaDataHoraAtual()
+    {
+        self::SetarFusoHorario();
+        return date('Y-m-d H:i:s');
+    }
+
     public static function GravaDataAtual()
     {
         self::SetarFusoHorario();

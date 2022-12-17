@@ -103,7 +103,7 @@ class EquipamentoSQL
                     ON  tipoe.id = tipoequip_id
             INNER JOIN  tb_modelo AS mo
                     ON  mo.id = modelo_id
-                 WHERE  situacao = ? AND setor_id = ?";
+                 WHERE  situacao = ? AND setor_id = ? ORDER BY nomeMo";
         return $sql;
     }
 

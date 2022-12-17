@@ -1,16 +1,31 @@
 <?php
 
 namespace Src\controller;
+use Src\model\ChamadoDAO;
+use Src\VO\ChamadoVO;
+use Src\_public\Util;
 
-use Src\VO\TipoEquipamentoVO;
+class ChamadoController{
 
-class ChamadoController
-{
-    public function CadastrarChamado(TipoEquipamentoVO $VO): int
+    private $dao;
+
+    public function __construct()
     {
-        if (empty($VO->getTipoEquipamento()) || empty($VO->getObs())) :
+        $this->dao = new ChamadoDAO();
+    }
+
+    public function AbrirChamadoCTRL(ChamadoVO $vo)
+    {
+        if(empty($vo->getDescricaoProblema()) Or empty($vo->getIdAlocar()))
             return 0;
-        endif;
-        return 1;
+
+        $vo->setDataAbertura(Util::GravaDataHoraAtual());
+        $vo->setSituacao(SITUACAO_MANUTENCAO_EQUIPAMENTO);
+        $vo->setFuncaoErro(ABRIR_CHAMADO);
+        $vo->setId($vo->getId());
+
+        return $this->dao->AbrirChamadoDAO($vo);
+
     }
 }
+

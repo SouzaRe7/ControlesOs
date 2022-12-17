@@ -1,7 +1,11 @@
 <?php
 namespace Src\resource\api\classe;
+
+use Src\controller\ChamadoController;
 use Src\resource\api\classe\apiRequest;
 use Src\controller\UsuarioController;
+use Src\controller\NovoEquipController;
+use Src\VO\ChamadoVO;
 use Src\VO\FuncionarioVO;
 
 class FuncionarioAPI extends apiRequest{
@@ -15,7 +19,7 @@ class FuncionarioAPI extends apiRequest{
     {
         return method_exists($this, $endpoint);
     }
-    public function DetalharMeusDados()
+    public function DetalharMeusDadosAPI()
     {   
         if(empty($this->params['id_user']))
             return 0;
@@ -23,7 +27,7 @@ class FuncionarioAPI extends apiRequest{
         return (new UsuarioController)->DetalharUsuarioCTRL($this->params['id_user']);
     }
 
-    public function AlterarMeusDados(){
+    public function AlterarMeusDadosAPI(){
         $vo = new FuncionarioVO;
 
         $vo->setId($this->params['id_user']);
@@ -41,5 +45,23 @@ class FuncionarioAPI extends apiRequest{
 
         return (new UsuarioController)->AlterarUsuarioCTRL($vo);
     }
+
+    public function SelecionarEquipamentosAlocadosAPI(){
+        if(empty($this->params['id_setor']))
+            return 0;
+
+        return (new NovoEquipController)->SelecionarEquipamentoSetorAlocadoCTRL($this->params['id_setor']);    
+    }
+
+    public function AbrirChamadoAPI(){
+        $vo = new ChamadoVO();
+
+        $vo->setId($this->params['id_user']);
+        $vo->setDescricaoProblema($this->params['problema']);
+        $vo->setIdAlocar($this->params['id_alocar']);
+
+        return (new ChamadoController)->AbrirChamadoCTRL($vo);
+    }
+
 }
 ?>

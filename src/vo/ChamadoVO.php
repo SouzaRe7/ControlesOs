@@ -1,11 +1,13 @@
 <?php
 
 namespace Src\VO;
-
+use Src\VO\FuncionarioVO;
+use Src\VO\TecnicoVO;
 use Src\_public\Util;
 
-class ChamadoVO
+class ChamadoVO extends TecnicoVO
 {
+    private $id_alocar;
     private $data_abertura;
     private $descricao_problema;
     private $data_atendimento;
@@ -14,6 +16,25 @@ class ChamadoVO
     private $id_funcionario;
     private $tecnico_atendimento;
     private $tecnico_encerramento;
+    private $Situacao;
+
+    public function setSituacao($Situacao)
+    {
+        $this->Situacao = $Situacao;
+    }
+    public function getSituacao()
+    {
+        return $this->Situacao;
+    }
+
+    public function setIdAlocar($id_alocar)
+    {
+        $this->id_alocar = $id_alocar;
+    }
+    public function getIdAlocar()
+    {
+        return $this->id_alocar;
+    }
 
     public function setDataAbertura($data_abertura)
     {
