@@ -4,6 +4,18 @@ namespace Src\model\SQL;
 
 class UsuarioSQL{
 
+    public static function RECUPERAR_SENHA_ATUAL_SQL()
+    {
+        $sql = "SELECT senha FROM tb_usuario WHERE id = ?";
+        return $sql;
+    }
+
+    public static function ATUALIZAR_SENHA_SQL()
+    {
+        $sql = "UPDATE tb_usuario SET senha = ? WHERE id = ?";
+        return $sql;
+    }
+
     public static function UPDATE_USUARIO_SQL()
     {
         $sql = "UPDATE tb_usuario SET nome = ?, login = ?, senha = ?, status = ?, fone = ? WHERE id = ?";
@@ -99,7 +111,7 @@ class UsuarioSQL{
                         nome, 
                         senha
                   FROM  tb_usuario
-                 WHERE  login = ? AND status = ?";
+                 WHERE  login = '?' AND status = ?";
         return $sql;
     }
 }

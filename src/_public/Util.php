@@ -105,6 +105,11 @@ class Util
         return explode(':', $h)[0] . ':' . explode(':', $h)[1];
     }
 
+    public static function VerificarSenhaCriptografada($senha)
+    {
+        return password_hash($senha, PASSWORD_DEFAULT);
+    }
+
     public static function CriarSenha($senha)
     {
         $senhaArray = explode('@', $senha);

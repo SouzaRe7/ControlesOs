@@ -14,6 +14,13 @@ class ChamadoController{
         $this->dao = new ChamadoDAO();
     }
 
+    public function FiltrarChamadoCTRL($tipo)
+    {
+        if ($tipo == "")
+            return 0;
+        return $this->dao->FiltrarChamadoDAO($tipo);    
+    }
+
     public function AbrirChamadoCTRL(ChamadoVO $vo)
     {
         if(empty($vo->getDescricaoProblema()) Or empty($vo->getIdAlocar()))

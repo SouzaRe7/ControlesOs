@@ -24,44 +24,44 @@ class UsuarioController
         return $this->dao->FiltrarUsuarioDAO($nome);
     }
 
-    public function VerificarEmailDuplicadoCTRL($email, $id = '') : bool
+    public function VerificarEmailDuplicadoCTRL($email, $id = ''): bool
     {
-        return $this->dao->VerificarEmailDuplicadoDAO($id,$email);
+        return $this->dao->VerificarEmailDuplicadoDAO($id, $email);
     }
-    
+
     public function AlterarUsuarioCTRL($vo)
     {
-        if (empty($vo->getTipo()) Or empty($vo->getNome()) Or empty($vo->getFone()) Or empty($vo->getLogin()) Or empty($vo->getRua()) Or empty($vo->getBairro()) Or empty($vo->getCep()) Or empty($vo->getNomeCidade()) Or empty($vo->getSiglaEstado())) :
+        if (empty($vo->getTipo()) or empty($vo->getNome()) or empty($vo->getFone()) or empty($vo->getLogin()) or empty($vo->getRua()) or empty($vo->getBairro()) or empty($vo->getCep()) or empty($vo->getNomeCidade()) or empty($vo->getSiglaEstado())) :
             return 0;
         endif;
-        if($vo->getTipo() == PERFIL_FUNCIONARIO):
-            if(empty($vo->getIdSetor()))
-            return 0;
-        elseif($vo->getTipo() == PERFIL_TECNICO)
-            if(empty($vo->getNomeEmpresa()))
-            return 0;
+        if ($vo->getTipo() == PERFIL_FUNCIONARIO) :
+            if (empty($vo->getIdSetor()))
+                return 0;
+            elseif ($vo->getTipo() == PERFIL_TECNICO)
+                if (empty($vo->getNomeEmpresa()))
+                    return 0;
         endif;
         $vo->setStatus(STATUS_ATIVO);
         $vo->setSenha(Util::CriarSenha($vo->getLogin()));
         $vo->setFuncaoErro(ALTERAR_USUARIO);
         $vo->setIdlogado(Util::CodigoLogado() == 0 ? $vo->getId() : Util::CodigoLogado());
-        return $this->dao->AlterarUsuarioDAO($vo);    
+        return $this->dao->AlterarUsuarioDAO($vo);
     }
-    
+
     public function CadastrarUsuarioCTRL($vo)
     {
-        if(empty($vo->getTipo()) Or empty($vo->getNome()) Or empty($vo->getFone()) Or empty($vo->getLogin()) Or empty($vo->getRua()) Or empty($vo->getBairro()) Or empty($vo->getCep()) Or empty($vo->getNomeCidade()) Or empty($vo->getSiglaEstado())):
+        if (empty($vo->getTipo()) or empty($vo->getNome()) or empty($vo->getFone()) or empty($vo->getLogin()) or empty($vo->getRua()) or empty($vo->getBairro()) or empty($vo->getCep()) or empty($vo->getNomeCidade()) or empty($vo->getSiglaEstado())) :
             return 0;
         endif;
 
-        if($vo->getTipo() == PERFIL_FUNCIONARIO):
-            if(empty($vo->getIdSetor()))
-            return 0;
-        elseif($vo->getTipo() == PERFIL_TECNICO)
-            if(empty($vo->getNomeEmpresa()))
-            return 0;
+        if ($vo->getTipo() == PERFIL_FUNCIONARIO) :
+            if (empty($vo->getIdSetor()))
+                return 0;
+            elseif ($vo->getTipo() == PERFIL_TECNICO)
+                if (empty($vo->getNomeEmpresa()))
+                    return 0;
         endif;
-        
+
         $vo->setStatus(STATUS_ATIVO);
         $vo->setSenha(Util::CriarSenha($vo->getLogin()));
 
@@ -81,19 +81,47 @@ class UsuarioController
 
     public function VerificarLoginAcessoCTRL($login, $senha)
     {
-        if(empty($login) Or empty($senha))
+        if (empty($login) or empty($senha))
             return 0;
-
+        
         $usuario = $this->dao->VerificarLoginAcessoDAO($login, STATUS_ATIVO);
         # Testa a variavel para ver se encontrou o usuario com o login digitado
-        if(empty($usuario))
+        if (empty($usuario))
             return -4;
         # Teste a senha digitada, se bate com a senha criptografada do BD
-        if(!Util::ValidarSenhaBanco($senha, $usuario['senha']));
+        if (!Util::ValidarSenhaBanco($senha, $usuario['senha']));
         return -5;
 
         Util::CriarSessao($usuario['id'], $usuario['nome']);
         Util::ChamarPagina('consultar_usuario.php');
-        
+    }
+
+    public function AtualizarSenhaAtualCTRL(UsuarioVO $vo, $repetir_senha)
+    {
+        if (empty($vo->getSenha()) or empty($vo->getId()))
+            return 0;
+
+        if (strlen($vo->getSenha()) < 6)
+        return -2;
+        if ($vo->getSenha() != $repetir_senha)
+        return -3;
+        $vo->setSenha(Util::VerificarSenhaCriptografada($vo->getSenha()));
+        $vo->setFuncaoErro(AUALIZAR_SENHA);
+        $vo->setIdLogado(Util::CodigoLogado() == 0 ? $vo->getId() : Util::CodigoLogado());
+        return $this->dao->AtualizarSenhalDAO($vo);
+    }
+
+    public function ValidarSenhaAtualCTRL($id, $senha)
+    {
+        if (empty($id) or empty($senha))
+            return 0;
+
+        $user_senha = $this->dao->RecuperarSenhaAtualDAO($id);
+
+        if (password_verify($senha, $user_senha['senha'])) :
+            return 1;
+        else :
+            return -1;
+        endif;
     }
 }

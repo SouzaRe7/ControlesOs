@@ -20,9 +20,34 @@ class usuarioDAO extends Conexao
         $this->conexao = parent::retornaConexao();
     }
 
+    public function RecuperarSenhaAtualDAO($id)
+    {
+        $sql = $this->conexao->prepare(UsuarioSQL::RECUPERAR_SENHA_ATUAL_SQL());
+        $i = 1;
+        $sql->bindValue($i++, $id);
+        $sql->execute();
+        return $sql->fetch(\PDO::FETCH_ASSOC);
+    }
+
+    public function AtualizarSenhalDAO(UsuarioVO $vo)
+    {
+        $sql = $this->conexao->prepare(UsuarioSQL::ATUALIZAR_SENHA_SQL());
+        $i = 1;
+        $sql->bindValue($i++, $vo->getSenha());
+        $sql->bindValue($i++, $vo->getId());
+        try {
+            $sql->execute();
+            return 1;
+        } catch (Exception $ex) {
+            $vo->setMsgErro($ex->getMessage());
+            parent::GravarLogErro($vo);
+            return -1;
+        }
+    }
+
     public function VerificarLoginAcessoDAO($login, $status)
     {
-        $sql = $this->conexao->prepare(UsuarioSQL::BUSCAR_DADOS_ACESSO_SQL($login));
+        $sql = $this->conexao->prepare(UsuarioSQL::BUSCAR_DADOS_ACESSO_SQL());
         $i = 1;
         $sql->bindValue($i++, $login);
         $sql->bindValue($i++, $status);

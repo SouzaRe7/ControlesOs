@@ -5,6 +5,7 @@ use Src\controller\ChamadoController;
 use Src\resource\api\classe\apiRequest;
 use Src\controller\UsuarioController;
 use Src\controller\NovoEquipController;
+use Src\VO\UsuarioVO;
 use Src\VO\ChamadoVO;
 use Src\VO\FuncionarioVO;
 
@@ -63,5 +64,22 @@ class FuncionarioAPI extends apiRequest{
         return (new ChamadoController)->AbrirChamadoCTRL($vo);
     }
 
+    public function FiltrarChamadoAPI()
+    {
+        return (new ChamadoController)->FiltrarChamadoCTRL($this->params['situacao']);
+    }
+
+    public function VerificarSenhaAtualAPI()
+    {
+        return (new UsuarioController)->ValidarSenhaAtualCTRL($this->params['id'], $this->params['senha']);
+    }
+
+    public function AtualizarSenhaAPI()
+    {
+        $vo = new UsuarioVO;
+        $vo->setId($this->params['id']);
+        $vo->setSenha($this->params['senha']);
+        return (new UsuarioController)->AtualizarSenhaAtualCTRL($vo, $this->params['repetir_senha']);
+    }
 }
 ?>

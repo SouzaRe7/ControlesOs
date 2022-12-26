@@ -15,6 +15,7 @@ const ALTERAR_MODELO = "AlterarModelo";
 const ALTERAR_EQUIPAMENTO = "AlterarEquipamento";
 const ALTERAR_USUARIO = "AlterarUsuario";
 const MUDAR_STATUS = "MudarStatus";
+const AUALIZAR_SENHA = "AualizarSenha";
 
 const EXCLUIR_TIPO_EQUIPAMENTO = "ExcluirTipoEquipamento";
 const EXCLUIR_SETOR = "ExcluirSetor";
@@ -38,8 +39,15 @@ const SITUACAO_MANUTENCAO_EQUIPAMENTO = 3;
 const PERFIL_ADM = 1;
 const PERFIL_FUNCIONARIO = 2;
 const PERFIL_TECNICO = 3;
+
 # Status do perfil
 const STATUS_ATIVO = 1;
 const STATUS_INATIVO = 0;
+
+# Situação do Atendimento
+const SITUACAO_EM_ABERTO = 1;
+const SITUACAO_EM_ATENDIMENTO = 2;
+const SITUACAO_ENCERRADO = 3;
+const SITUACAO_TODOS = 4;
 
 define('PATH_URL', $_SERVER["DOCUMENT_ROOT"] . '/ControlesOs1/src/');
