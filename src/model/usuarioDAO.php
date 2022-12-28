@@ -45,13 +45,24 @@ class usuarioDAO extends Conexao
         }
     }
 
+    public function VerificarLoginAcessoFuncionarioDAO($login, $status, $tipo)
+    {
+        $sql = $this->conexao->prepare(UsuarioSQL::BUSCAR_DADOS_ACESSO_FUCIONARIO_SQL());
+        $i = 1;
+        $sql->bindValue($i++, $login);
+        $sql->bindValue($i++, $status);
+        $sql->bindValue($i++, $tipo);
+        
+        return $sql->fetch(\PDO::FETCH_ASSOC);
+    }
+
     public function VerificarLoginAcessoDAO($login, $status)
     {
         $sql = $this->conexao->prepare(UsuarioSQL::BUSCAR_DADOS_ACESSO_SQL());
         $i = 1;
         $sql->bindValue($i++, $login);
         $sql->bindValue($i++, $status);
-        $sql->execute();
+        
         return $sql->fetch(\PDO::FETCH_ASSOC);
     }
 

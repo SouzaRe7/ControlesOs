@@ -54,7 +54,7 @@ class UsuarioSQL{
     
     public static function SELECIONAR_EMAIL($id)
     {
-        $sql = "SELECT login FROM tb_usuario WHERE login = ?";
+        $sql = "SELECT login, tipo FROM tb_usuario WHERE login = ?";
 
         if(!empty($id))
             $sql .= " AND id != ?";
@@ -111,7 +111,21 @@ class UsuarioSQL{
                         nome, 
                         senha
                   FROM  tb_usuario
-                 WHERE  login = '?' AND status = ?";
+                 WHERE  login = ? AND status = ?";
+        return $sql;
+    }
+
+    public static function BUSCAR_DADOS_ACESSO_FUCIONARIO_SQL()
+    {
+        $sql = "SELECT  id, 
+                        nome, 
+                        senha,
+                        tipo,
+                        setor_id
+                  FROM  tb_usuario
+             LEFT JOIN  tb_funcionario
+                    ON  tb_usuario.id = tb_funcionario.funcionario_id
+                 WHERE  login = '?' AND status = ? AND tipo = ?";
         return $sql;
     }
 }

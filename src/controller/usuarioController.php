@@ -83,7 +83,7 @@ class UsuarioController
     {
         if (empty($login) or empty($senha))
             return 0;
-        
+
         $usuario = $this->dao->VerificarLoginAcessoDAO($login, STATUS_ATIVO);
         # Testa a variavel para ver se encontrou o usuario com o login digitado
         if (empty($usuario))
@@ -96,15 +96,43 @@ class UsuarioController
         Util::ChamarPagina('consultar_usuario.php');
     }
 
+    public function VerificarLoginAcessoFuncionarioCTRL($login, $senha)
+    {
+        if (empty($login) or empty($senha))
+            return 0;
+
+        $usuario = $this->dao->VerificarLoginAcessoFuncionarioDAO($login, STATUS_ATIVO, PERFIL_FUNCIONARIO);
+
+        if (!empty($usuario)) {
+
+            if (password_verify($senha, $usuario['senha'])) {
+
+                $dados_usuario = [
+                    'id_funcionario' => $usuario['id'],
+                    'nome_usuario' => $usuario['nome'],
+                    'setor_usuario' => $usuario['setor_id'],
+                    'tipo_usuario' => $usuario['tipo']
+                ];
+
+                $token = Util::CreateTokenAuthentication($dados_usuario);
+                return $token;
+            } else {
+                return -3;
+            }
+        } else {
+            return -3;
+        }
+    }
+
     public function AtualizarSenhaAtualCTRL(UsuarioVO $vo, $repetir_senha)
     {
         if (empty($vo->getSenha()) or empty($vo->getId()))
             return 0;
 
         if (strlen($vo->getSenha()) < 6)
-        return -2;
+            return -2;
         if ($vo->getSenha() != $repetir_senha)
-        return -3;
+            return -3;
         $vo->setSenha(Util::VerificarSenhaCriptografada($vo->getSenha()));
         $vo->setFuncaoErro(AUALIZAR_SENHA);
         $vo->setIdLogado(Util::CodigoLogado() == 0 ? $vo->getId() : Util::CodigoLogado());
@@ -113,15 +141,19 @@ class UsuarioController
 
     public function ValidarSenhaAtualCTRL($id, $senha)
     {
-        if (empty($id) or empty($senha))
-            return 0;
+        if (Util::AuthenticationTokenAccess()) {
+            if (empty($id) or empty($senha))
+                return 0;
 
-        $user_senha = $this->dao->RecuperarSenhaAtualDAO($id);
+            $user_senha = $this->dao->RecuperarSenhaAtualDAO($id);
 
-        if (password_verify($senha, $user_senha['senha'])) :
-            return 1;
-        else :
-            return -1;
-        endif;
+            if (password_verify($senha, $user_senha['senha'])) :
+                return 1;
+            else :
+                return -1;
+            endif;
+        } else {
+            return -1000;
+        }
     }
 }

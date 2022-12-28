@@ -6,7 +6,7 @@ class Util
 {
     public static function IniciarSessao()
     {
-        if(!isset($_SESSION))
+        if (!isset($_SESSION))
             session_start();
     }
 
@@ -35,7 +35,7 @@ class Util
         self::IniciarSessao();
         unset($_SESSION["id"]);
         unset($_SESSION["nome"]);
-        self::IrParaLogin();   
+        self::IrParaLogin();
     }
 
     public static function IrParaLogin()
@@ -47,7 +47,7 @@ class Util
     public static function VerificarLogin()
     {
         self::IniciarSessao();
-        if(!isset($_SESSION['id']))
+        if (!isset($_SESSION['id']))
             self::IrParaLogin();
     }
 
@@ -97,11 +97,13 @@ class Util
         return date('Y-m-d');
     }
 
-    public static function FormatarDataExibir($d) {
+    public static function FormatarDataExibir($d)
+    {
         return explode('-', $d)[2] . '/' . explode('-', $d)[1] . '/' . explode('-', $d)[0];
     }
 
-    public static function FormatarHoraExibir($h) {
+    public static function FormatarHoraExibir($h)
+    {
         return explode(':', $h)[0] . ':' . explode(':', $h)[1];
     }
 
@@ -138,7 +140,6 @@ class Util
             case STATUS_INATIVO:
                 $tipo = "Inativo";
                 break;
-            
         }
         return $tipo;
     }
@@ -158,5 +159,52 @@ class Util
                 break;
         }
         return $nome;
+    }
+
+    public static function CreateTokenAuthentication(array $dados_user)
+    {
+        $header = [
+            'typ' => 'JWT',
+            'alg' => 'HS256'
+        ];
+
+        $payload = $dados_user;
+        $header = json_encode($header);
+        $payload = json_encode($payload);
+        $header = base64_encode($header);
+        $payload = base64_encode($payload);
+        $sign = hash_hmac(
+            "sha256",
+            $header . '.' . $payload,
+            SECRET_JWT_FUNC,
+            true
+        );
+        $sign = base64_encode($sign);
+        $token = $header . '.' . $payload . '.' . $sign;
+        return $token;
+    }
+
+    public static function AuthenticationTokenAccess()
+    {
+        //Recupera todo o cabeçalho da requisição
+        $http_header = apache_request_headers();
+        //Se n for nulo
+        if ($http_header['Authorization'] != null && str_contains($http_header['Authorization'], '.')) :
+            //quebra o bearer(autenticação de token)
+            $bearer = explode(' ', $http_header['Authorization']);
+            $token = explode('.', $bearer[1]);
+            //quebrando os valores e jogango em seus significados
+            $header = $token[0];
+            $payload = $token[1];
+            $sign = $token[2];
+            //Faz a criptografia novamente para ver se bate com a chave
+            $valid = hash_hmac('sha256', $header . '.' . $payload, SECRET_JWT_FUNC, true);
+            $valid = base64_encode($valid);
+            if ($valid === $sign)
+                return true;
+            else
+                return false;
+        endif;
+        return false;
     }
 }

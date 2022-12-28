@@ -51,3 +51,6 @@ const SITUACAO_ENCERRADO = 3;
 const SITUACAO_TODOS = 4;
 
 define('PATH_URL', $_SERVER["DOCUMENT_ROOT"] . '/ControlesOs1/src/');
+
+# Chave secrete token Obs pode ser nome qualquer
+const SECRET_JWT_FUNC = 'chavesecretatoken';
