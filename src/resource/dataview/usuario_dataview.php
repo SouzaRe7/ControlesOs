@@ -147,4 +147,5 @@ elseif (isset($_GET['id_user']) and is_numeric($_GET['id_user'])) :
     endif;
 elseif (isset($_POST['btnAcessar'])) :
     $ret = $usuarioCTRL->VerificarLoginAcessoCTRL($_POST['login'], $_POST['senha']);    
+    Util::Mostrar($_POST);
 endif; ?>

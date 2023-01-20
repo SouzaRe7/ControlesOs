@@ -48,32 +48,34 @@ require_once dirname(__DIR__, 2) . '/resource/dataview/equipamento_dataview.php'
                     </div>
                     <div class="card-body">
                         <form id="equipamentoForm" action="novo_equipamento.php" method="post">
-                            <input name="cod" id="cod" type="hidden" value="<?= $id?>" >
-                            <div class="form-group">
-                                <label>Tipo</label>
-                                <select id="admTipo" name="admTipo" class="form-control select2 obg" style="width: 100%;">
-                                    <option value="">Selecione</option>
-                                    <?php foreach ($dadosTipoEquipamentos as $itemTipoEquipamentos) : ?>
-                                        <option value="<?= $itemTipoEquipamentos['id'] ?>" <?= $id == '' ? '' : ($id == $itemTipoEquipamentos['id'] ? '' : 'selected' )?> ><?= $itemTipoEquipamentos['nome'] ?></option>
-                                    <?php endforeach; ?>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>Modelo</label>
-                                <select id="admModelo" name="admModelo" class="form-control select2 obg" style="width: 100%;">
-                                    <option value="">Selecione</option>
-                                    <?php foreach ($dadosModelo as $itemModelo) : ?>
-                                        <option value="<?= $itemModelo['id'] ?>" <?= $id == '' ? '' : ($id == $itemModelo['id'] ? '' : 'selected') ?> ><?= $itemModelo['nome'] ?></option>
-                                    <?php endforeach; ?>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>Identificação</label>
-                                <input id="admIdentificacao" name="admIdentificacao" class="form-control obg" placeholder="Identificação" value="<?= $id == '' ? '': $dados['identificacao']?>">
-                            </div>
-                            <div class="form-group">
-                                <label>Descrição</label>
-                                <textarea id="admObs" name="admObs" class="form-control obg" placeholder="Descrição"><?= $id == '' ? '' : $dados['descricao']?></textarea>
+                            <input name="cod" id="cod" type="hidden" value="<?= $id ?>">
+                            <div class="row">
+                                <div class="form-group col-md-4">
+                                    <label>Tipo</label>
+                                    <select id="admTipo" name="admTipo" class="form-control obg">
+                                        <option value="">Selecione</option>
+                                        <?php foreach ($dadosTipoEquipamentos as $itemTipoEquipamentos) : ?>
+                                            <option value="<?= $itemTipoEquipamentos['id'] ?>" <?= $id == '' ? '' : ($id == $itemTipoEquipamentos['id'] ? '' : 'selected') ?>><?= $itemTipoEquipamentos['nome'] ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label>Modelo</label>
+                                    <select id="admModelo" name="admModelo" class="form-control select2 obg" style="width: 100%;">
+                                        <option value="">Selecione</option>
+                                        <?php foreach ($dadosModelo as $itemModelo) : ?>
+                                            <option value="<?= $itemModelo['id'] ?>" <?= $id == '' ? '' : ($id == $itemModelo['id'] ? '' : 'selected') ?>><?= $itemModelo['nome'] ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label>Identificação</label>
+                                    <input id="admIdentificacao" name="admIdentificacao" class="form-control obg" placeholder="Identificação" value="<?= $id == '' ? '' : $dados['identificacao'] ?>">
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <label>Descrição</label>
+                                    <textarea id="admObs" name="admObs" class="form-control obg" rows="4" placeholder="Descrição"><?= $id == '' ? '' : $dados['descricao'] ?></textarea>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <button onclick="return CadastrarEquipamentoAjx('equipamentoForm')" name="btnGravar" type="button" class="btn btn-block btn-primary col-md-4">Gravar</button>

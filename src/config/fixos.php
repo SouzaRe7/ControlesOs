@@ -54,3 +54,4 @@ define('PATH_URL', $_SERVER["DOCUMENT_ROOT"] . '/ControlesOs1/src/');
 
 # Chave secrete token Obs pode ser nome qualquer
 const SECRET_JWT_FUNC = 'chavesecretatoken';
+const NAO_AUTORIZADO = -1000;

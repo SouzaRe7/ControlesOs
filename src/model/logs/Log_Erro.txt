@@ -370,3 +370,33 @@ HORA: 14:06:24
 FUNÇÃO: AlterarUsuario
 COD. LOGADO: 1
 ERRO: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+--------------------------------------------------------
+DATA: 16/01/2023
+HORA: 19:49:12
+FUNÇÃO: AbrirChamado
+COD. LOGADO: 
+ERRO: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'funcionario_id' cannot be null
+--------------------------------------------------------
+DATA: 16/01/2023
+HORA: 19:50:42
+FUNÇÃO: AbrirChamado
+COD. LOGADO: 
+ERRO: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_chamado`, CONSTRAINT `fk_tb_chamado_tb_funcionario1` FOREIGN KEY (`funcionario_id`) REFERENCES `tb_funcionario` (`funcionario_id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+--------------------------------------------------------
+DATA: 16/01/2023
+HORA: 19:50:49
+FUNÇÃO: AbrirChamado
+COD. LOGADO: 
+ERRO: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_chamado`, CONSTRAINT `fk_tb_chamado_tb_funcionario1` FOREIGN KEY (`funcionario_id`) REFERENCES `tb_funcionario` (`funcionario_id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+--------------------------------------------------------
+DATA: 16/01/2023
+HORA: 19:52:58
+FUNÇÃO: AbrirChamado
+COD. LOGADO: 
+ERRO: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_chamado`, CONSTRAINT `fk_tb_chamado_tb_funcionario1` FOREIGN KEY (`funcionario_id`) REFERENCES `tb_funcionario` (`funcionario_id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+--------------------------------------------------------
+DATA: 16/01/2023
+HORA: 20:09:17
+FUNÇÃO: AbrirChamado
+COD. LOGADO: 
+ERRO: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_chamado`, CONSTRAINT `fk_tb_chamado_tb_funcionario1` FOREIGN KEY (`funcionario_id`) REFERENCES `tb_funcionario` (`funcionario_id`) ON DELETE NO ACTION ON UPDATE NO ACTION)

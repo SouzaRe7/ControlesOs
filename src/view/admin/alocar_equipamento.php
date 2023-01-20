@@ -49,23 +49,25 @@ require_once dirname(__DIR__, 2) . '/resource/dataview/alocar_dataview.php';
                     </div>
                     <div class="card-body">
                         <form action="alocar_equipamento.php" method="post" id="form_alocar">
-                            <div class="form-group">
-                                <label>Equipamemto</label>
-                                <select id="admEquipamento" name="admEquipamento" class="form-control select2 obg" style="width: 100%;">
-                                    <option value="">Selecione</option>
-                                    <?php foreach($eqs as $e):?>
-                                    <option value="<?= $e['id']?>"><?= $e['nome_modelo']?></option>
-                                    <?php endforeach;?>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>Setor</label>
-                                <select id="admSetor" name="admSetor" class="form-control select2 obg" style="width: 100%;">
-                                <option value="">Selecione</option>
-                                <?php foreach($setores as $s):?>
-                                    <option value="<?= $s['id']?>"><?= $s['nome_setor']?></option>
-                                    <?php endforeach;?>
-                                </select>
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label>Equipamemto</label>
+                                    <select id="admEquipamento" name="admEquipamento" class="form-control obg">
+                                        <option value="">Selecione</option>
+                                        <?php foreach ($eqs as $e) : ?>
+                                            <option value="<?= $e['id'] ?>"><?= $e['nome_modelo'] ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>Setor</label>
+                                    <select id="admSetor" name="admSetor" class="form-control obg">
+                                        <option value="">Selecione</option>
+                                        <?php foreach ($setores as $s) : ?>
+                                            <option value="<?= $s['id'] ?>"><?= $s['nome_setor'] ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <button onclick=" return AlocarEquipamentoAjx('form_alocar')" id="btnGravar" name="btnGravar" type="button" class="btn btn-block btn-primary col-md-4">Gravar</button>
@@ -87,7 +89,8 @@ require_once dirname(__DIR__, 2) . '/resource/dataview/alocar_dataview.php';
     </div>
     <!-- ./wrapper -->
 
-    <?php include_once PATH_URL . '/template/_includes/_script.php'; include_once PATH_URL . '/template/_includes/_msg.php'; ?>
+    <?php include_once PATH_URL . '/template/_includes/_script.php';
+    include_once PATH_URL . '/template/_includes/_msg.php'; ?>
     <script src="../../resource//ajax/equipamento-ajx.js"></script>
 </body>
 

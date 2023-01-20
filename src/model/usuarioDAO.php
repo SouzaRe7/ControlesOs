@@ -52,7 +52,7 @@ class usuarioDAO extends Conexao
         $sql->bindValue($i++, $login);
         $sql->bindValue($i++, $status);
         $sql->bindValue($i++, $tipo);
-        
+        $sql->execute();
         return $sql->fetch(\PDO::FETCH_ASSOC);
     }
 
@@ -62,7 +62,7 @@ class usuarioDAO extends Conexao
         $i = 1;
         $sql->bindValue($i++, $login);
         $sql->bindValue($i++, $status);
-        
+        $sql->execute();
         return $sql->fetch(\PDO::FETCH_ASSOC);
     }
 

@@ -89,8 +89,8 @@ class UsuarioController
         if (empty($usuario))
             return -4;
         # Teste a senha digitada, se bate com a senha criptografada do BD
-        if (!Util::ValidarSenhaBanco($senha, $usuario['senha']));
-        return -5;
+        if (!Util::ValidarSenhaBanco($senha, $usuario['senha']))
+            return -5;
 
         Util::CriarSessao($usuario['id'], $usuario['nome']);
         Util::ChamarPagina('consultar_usuario.php');
@@ -141,7 +141,7 @@ class UsuarioController
 
     public function ValidarSenhaAtualCTRL($id, $senha)
     {
-        if (Util::AuthenticationTokenAccess()) {
+        if(Util::AuthenticationTokenAccess()) {
             if (empty($id) or empty($senha))
                 return 0;
 
@@ -153,7 +153,7 @@ class UsuarioController
                 return -1;
             endif;
         } else {
-            return -1000;
+            return NAO_AUTORIZADO;
         }
     }
 }

@@ -16,7 +16,7 @@ class UsuarioVO extends EnderecoVO
     private $fone;
 
     public function setId($id){
-        $this->idUser =  $id;
+        $this->idUser = $id;
     }
     public function getId(){
       return $this->idUser;

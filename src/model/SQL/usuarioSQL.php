@@ -125,7 +125,7 @@ class UsuarioSQL{
                   FROM  tb_usuario
              LEFT JOIN  tb_funcionario
                     ON  tb_usuario.id = tb_funcionario.funcionario_id
-                 WHERE  login = '?' AND status = ? AND tipo = ?";
+                 WHERE  login = ? AND status = ? AND tipo = ?";
         return $sql;
     }
 }
