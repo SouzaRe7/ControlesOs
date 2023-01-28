@@ -118,7 +118,7 @@ class usuarioDAO extends Conexao
         $i = 1;
         $sql->bindValue($i++, $vo->getNome());
         $sql->bindValue($i++, $vo->getLogin());
-        $sql->bindValue($i++, $vo->getSenha());
+        //$sql->bindValue($i++, $vo->getSenha());
         $sql->bindValue($i++, $vo->getStatus());
         $sql->bindValue($i++, $vo->getFone());
         $sql->bindValue($i++, $vo->getId());

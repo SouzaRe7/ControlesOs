@@ -18,7 +18,7 @@ class UsuarioSQL{
 
     public static function UPDATE_USUARIO_SQL()
     {
-        $sql = "UPDATE tb_usuario SET nome = ?, login = ?, senha = ?, status = ?, fone = ? WHERE id = ?";
+        $sql = "UPDATE tb_usuario SET nome = ?, login = ?, status = ?, fone = ? WHERE id = ?";
         return $sql;
     }
     

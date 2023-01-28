@@ -31,18 +31,19 @@ class UsuarioController
 
     public function AlterarUsuarioCTRL($vo)
     {
-        if (empty($vo->getTipo()) or empty($vo->getNome()) or empty($vo->getFone()) or empty($vo->getLogin()) or empty($vo->getRua()) or empty($vo->getBairro()) or empty($vo->getCep()) or empty($vo->getNomeCidade()) or empty($vo->getSiglaEstado())) :
+        if (empty($vo->getTipo())) return 0;
+        if (empty($vo->getNome()) or empty($vo->getFone()) or empty($vo->getLogin()) or empty($vo->getRua()) or empty($vo->getBairro()) or empty($vo->getCep()) or empty($vo->getNomeCidade()) or empty($vo->getSiglaEstado())) :
             return 0;
         endif;
-        if ($vo->getTipo() == PERFIL_FUNCIONARIO) :
+        if ($vo->getTipo() == PERFIL_FUNCIONARIO) {
             if (empty($vo->getIdSetor()))
                 return 0;
-            elseif ($vo->getTipo() == PERFIL_TECNICO)
-                if (empty($vo->getNomeEmpresa()))
-                    return 0;
-        endif;
+        } elseif ($vo->getTipo() == PERFIL_TECNICO) {
+            if (empty($vo->getNomeEmpresa()))
+                return 0;
+        };
         $vo->setStatus(STATUS_ATIVO);
-        $vo->setSenha(Util::CriarSenha($vo->getLogin()));
+        // $vo->setSenha(Util::CriarSenha($vo->getLogin()));
         $vo->setFuncaoErro(ALTERAR_USUARIO);
         $vo->setIdlogado(Util::CodigoLogado() == 0 ? $vo->getId() : Util::CodigoLogado());
         return $this->dao->AlterarUsuarioDAO($vo);
@@ -141,7 +142,7 @@ class UsuarioController
 
     public function ValidarSenhaAtualCTRL($id, $senha)
     {
-        if(Util::AuthenticationTokenAccess()) {
+        if (Util::AuthenticationTokenAccess()) {
             if (empty($id) or empty($senha))
                 return 0;
 
