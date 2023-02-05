@@ -97,6 +97,33 @@ class UsuarioController
         Util::ChamarPagina('consultar_usuario.php');
     }
 
+    public function VerificarLoginAcessoTecnicoCTRL($login, $senha)
+    {
+        if (empty($login) or empty($senha))
+            return 0;
+
+        $usuario = $this->dao->VerificarLoginAcessoTecnicoDAO($login, STATUS_ATIVO, PERFIL_TECNICO);
+
+        if (!empty($usuario)) {
+
+            if (password_verify($senha, $usuario['senha'])) {
+
+                $dados_usuario = [
+                    'id_tecnico' => $usuario['id'],
+                    'nome_usuario' => $usuario['nome'],
+                    'tipo_usuario' => $usuario['tipo']
+                ];
+
+                $token = Util::CreateTokenAuthentication($dados_usuario);
+                return $token;
+            } else {
+                return -3;
+            }
+        } else {
+            return -3;
+        }
+    }
+
     public function VerificarLoginAcessoFuncionarioCTRL($login, $senha)
     {
         if (empty($login) or empty($senha))
@@ -142,7 +169,7 @@ class UsuarioController
 
     public function ValidarSenhaAtualCTRL($id, $senha)
     {
-        //if (Util::AuthenticationTokenAccess()) {
+        if (Util::AuthenticationTokenAccess()) {
             if (empty($id) or empty($senha))
                 return 0;
 
@@ -153,8 +180,8 @@ class UsuarioController
             else :
                 return -1;
             endif;
-       // } else {
-       //     return NAO_AUTORIZADO;
-       // }
+        } else {
+            return NAO_AUTORIZADO;
+        }
     }
 }

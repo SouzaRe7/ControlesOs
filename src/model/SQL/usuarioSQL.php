@@ -128,6 +128,19 @@ class UsuarioSQL{
                  WHERE  login = ? AND status = ? AND tipo = ?";
         return $sql;
     }
+
+    public static function DADOS_ACESSO_TECNICO_SQL()
+    {
+        $sql = "SELECT  id, 
+                        nome, 
+                        senha,
+                        tipo
+                  FROM  tb_usuario
+             LEFT JOIN  tb_tecnico
+                    ON  tb_usuario.id = tb_tecnico.tecnico_id
+                 WHERE  login = ? AND status = ? AND tipo = ?";
+        return $sql;
+    }
 }
 
 

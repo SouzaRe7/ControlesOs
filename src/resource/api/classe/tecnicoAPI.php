@@ -91,4 +91,8 @@ class TecnicoAPI extends apiRequest{
         $vo->setSenha($this->params['senha']);
         return (new UsuarioController)->AtualizarSenhaAtualCTRL($vo, $this->params['repetir_senha']);
     }
+
+    public function AutenticarAPI(){
+        return (new UsuarioController)->VerificarLoginAcessoTecnicoCTRL ($this->params['login'], $this->params['senha']);
+    }
 }
