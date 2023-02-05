@@ -7,6 +7,7 @@ use Src\_public\Util;
 
 class ChamadoVO extends TecnicoVO
 {
+    private $id_chamado;
     private $id_alocar;
     private $data_abertura;
     private $descricao_problema;
@@ -17,6 +18,7 @@ class ChamadoVO extends TecnicoVO
     private $tecnico_atendimento;
     private $tecnico_encerramento;
     private $Situacao;
+    private $id_tecnico_encerramento;
 
     public function setSituacao($Situacao)
     {
@@ -25,6 +27,15 @@ class ChamadoVO extends TecnicoVO
     public function getSituacao()
     {
         return $this->Situacao;
+    }
+
+    public function setIdChamado($id_chamado)
+    {
+        $this->id_chamado = $id_chamado;
+    }
+    public function getIdChamado()
+    {
+        return $this->id_chamado;
     }
 
     public function setIdAlocar($id_alocar)
@@ -106,5 +117,14 @@ class ChamadoVO extends TecnicoVO
     public function getTecnicoEncerramento()
     {
         return $this->tecnico_encerramento;
+    }
+
+    public function setIdTecnicoEncerramento($id_tecnico_encerramento)
+    {
+        $this->id_tecnico_encerramento = Util::TratarDados($id_tecnico_encerramento);
+    }
+    public function getIdTecnicoEncerramento()
+    {
+        return $this->id_tecnico_encerramento;
     }
 }

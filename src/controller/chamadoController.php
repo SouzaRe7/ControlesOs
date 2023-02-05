@@ -14,11 +14,30 @@ class ChamadoController{
         $this->dao = new ChamadoDAO();
     }
 
-    public function FiltrarChamadoCTRL($tipo)
+    public function FiltrarChamadoCTRL($tipo, $id_setor)
     {
-        if ($tipo == "")
+        if (empty($tipo))
             return 0;
-        return $this->dao->FiltrarChamadoDAO($tipo);    
+        return $this->dao->FiltrarChamadoDAO($tipo, $id_setor);    
+    }
+
+    public function EncerrarAtendimentoChamadoCTRL(ChamadoVO $vo)
+    {
+        if(empty($vo->getLaudoTecnico()) Or empty($vo->getIdChamado()) Or empty($vo->getTecnicoEncerramento()))
+            return 0;
+        $vo->setDataEncerramento(Util::GravaDataHoraAtual());
+        $vo->setFuncaoErro(ENCERRAMENTO_CHAMADO);
+
+        return $this->dao->EncerrarAtendimentoChamadoDAO($vo);
+    }
+
+    public function AtualizarAtendimentoChamadoCTRL(ChamadoVO $vo)
+    {
+        if(empty($vo->getTecnicoAtendimento()) Or empty($vo->getIdChamado())) 
+            return 0;
+        $vo->setDataAtendimento(Util::GravaDataHoraAtual());
+        $vo->setFuncaoErro(ATENDIMENTO_CHAMADO);
+        return $this->dao->AtualizarAtendimentoChamadoDAO($vo);
     }
 
     public function AbrirChamadoCTRL(ChamadoVO $vo)

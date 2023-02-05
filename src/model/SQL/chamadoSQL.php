@@ -17,18 +17,36 @@ class chamadoSQL
         return $sql;
     }
 
-    public static function FILTAR_CHAMADO_SQL($tipo)
+    public static function ENCERRAR_ATENDIMENTO_CHAMADO_SQL()
+    {
+        $sql = 'UPDATE tb_chamado SET data_encerramento = ?, laudo_tecnico = ?, tecnico_encerramento = ? WHERE id = ?';
+        return $sql;
+    }
+
+    public static function ATUALIZAR_ATENDIMENTO_CHAMADO_SQL()
+    {
+        $sql = 'UPDATE tb_chamado SET data_adendimento = ?, tecnico_atendimento = ? WHERE id = ?';
+        return $sql;
+    }
+
+    public static function FILTAR_CHAMADO_SQL($tipo, $id_setor)
     {
         $sql = 'SELECT  DATE_FORMAT(ch.data_abertura, "%d/%m/%Y às %Hh%i") AS data_abertura,
                         ch.descricao_problema,
                         DATE_FORMAT(ch.data_adendimento, "%d/%m/%Y às %Hh%i") AS data_adendimento,
                         DATE_FORMAT(ch.data_encerramento, "%d/%m/%Y às %Hh%i") AS data_encerramento,
                         ch.laudo_tecnico,
+                        ch.tecnico_encerramento,
+                        ch.id AS id_chamado,
                         us_fu.nome AS nome_func,
-                        us_te.nome AS nome_tec,
+                        us_te.nome AS tecnico_nome,
                         eq.identificacao,
                         mo.nome AS nome_modelo,
-                        ti.nome AS nome_tipo
+                        ti.nome AS nome_tipo,
+                        al.setor_id,
+                        al.id AS id_alocar,
+                        nome_setor,
+                        (SELECT nome FROM tb_usuario WHERE id = tecnico_encerramento) AS nome_tec_encerramento
                   FROM  tb_chamado AS ch
             INNER JOIN  tb_funcionario AS fu
                     ON  fu.funcionario_id = ch.funcionario_id
@@ -45,7 +63,9 @@ class chamadoSQL
             INNER JOIN  tb_modelo AS mo
                     ON  mo.id = eq.modelo_id
             INNER JOIN  tb_tipoequip AS ti
-                    ON  ti.id = eq.tipoequip_id ';
+                    ON  ti.id = eq.tipoequip_id 
+            INNER JOIN  tb_setor AS se
+                    ON   se.id = al.setor_id ';
 
         switch ($tipo) {
             case SITUACAO_EM_ABERTO:
@@ -59,6 +79,9 @@ class chamadoSQL
                 break;
         }
 
+        if(!empty($id_setor))
+            $sql .= ' AND al.setor_id = ?';
+            
         return $sql;
     }
 }

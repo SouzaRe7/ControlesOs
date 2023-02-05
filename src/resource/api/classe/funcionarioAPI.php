@@ -66,7 +66,7 @@ class FuncionarioAPI extends apiRequest{
 
     public function FiltrarChamadoAPI()
     {
-        return (new ChamadoController)->FiltrarChamadoCTRL($this->params['situacao']);
+        return (new ChamadoController)->FiltrarChamadoCTRL($this->params['situacao'], isset($this->params['id_setor']) ? $this->params['id_setor'] : '');
     }
 
     public function VerificarSenhaAtualAPI()

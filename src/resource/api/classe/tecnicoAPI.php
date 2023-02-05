@@ -53,9 +53,29 @@ class TecnicoAPI extends apiRequest{
         $vo->setTipo($this->params['tipo']);
        
         return $this->ctrl_user->AlterarUsuarioCTRL($vo);
-
-
-
     }
 
+    public function FiltrarChamadoAPI()
+    {
+        return (new ChamadoController)->FiltrarChamadoCTRL($this->params['situacao'], isset($this->params['id_setor']) ? $this->params['id_setor'] : '');
+    }
+
+    public function EncerrarAtendimentoChamadoAPI()
+    {
+        $vo = new ChamadoVO;
+        $vo->setIdChamado($this->params['id_chamado']);
+        $vo->setTecnicoEncerramento($this->params['id_tecnico_encerramento']);
+        $vo->setLaudoTecnico($this->params['laudo']);
+
+        return (new ChamadoController)->EncerrarAtendimentoChamadoCTRL($vo);
+    }
+
+    public function AtualizarAtendimentoChamadoAPI()
+    {
+        $vo = new ChamadoVO;
+        $vo->setTecnicoAtendimento($this->params['id_tecnico_atendimento']);
+        $vo->setIdChamado($this->params['id_chamado']);
+
+        return (new ChamadoController)->AtualizarAtendimentoChamadoCTRL($vo);
+    }
 }

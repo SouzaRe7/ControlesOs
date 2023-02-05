@@ -400,3 +400,21 @@ HORA: 20:09:17
 FUNÇÃO: AbrirChamado
 COD. LOGADO: 
 ERRO: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_chamado`, CONSTRAINT `fk_tb_chamado_tb_funcionario1` FOREIGN KEY (`funcionario_id`) REFERENCES `tb_funcionario` (`funcionario_id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+--------------------------------------------------------
+DATA: 05/02/2023
+HORA: 16:07:36
+FUNÇÃO: EncerramentoChamado
+COD. LOGADO: 
+ERRO: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_chamado`, CONSTRAINT `fk_tb_chamado_tb_tecnico2` FOREIGN KEY (`tecnico_encerramento`) REFERENCES `tb_tecnico` (`tecnico_id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+--------------------------------------------------------
+DATA: 05/02/2023
+HORA: 16:10:00
+FUNÇÃO: EncerramentoChamado
+COD. LOGADO: 
+ERRO: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_chamado`, CONSTRAINT `fk_tb_chamado_tb_tecnico2` FOREIGN KEY (`tecnico_encerramento`) REFERENCES `tb_tecnico` (`tecnico_id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+--------------------------------------------------------
+DATA: 05/02/2023
+HORA: 16:16:11
+FUNÇÃO: EncerramentoChamado
+COD. LOGADO: 
+ERRO: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_chamado`, CONSTRAINT `fk_tb_chamado_tb_tecnico2` FOREIGN KEY (`tecnico_encerramento`) REFERENCES `tb_tecnico` (`tecnico_id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
