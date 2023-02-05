@@ -78,4 +78,17 @@ class TecnicoAPI extends apiRequest{
 
         return (new ChamadoController)->AtualizarAtendimentoChamadoCTRL($vo);
     }
+
+    public function VerificarSenhaAtualAPI()
+    {
+        return (new UsuarioController)->ValidarSenhaAtualCTRL($this->params['id'], $this->params['senha']);
+    }
+
+    public function AtualizarSenhaAPI()
+    {
+        $vo = new UsuarioVO;
+        $vo->setId($this->params['id']);
+        $vo->setSenha($this->params['senha']);
+        return (new UsuarioController)->AtualizarSenhaAtualCTRL($vo, $this->params['repetir_senha']);
+    }
 }

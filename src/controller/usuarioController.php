@@ -142,7 +142,7 @@ class UsuarioController
 
     public function ValidarSenhaAtualCTRL($id, $senha)
     {
-        if (Util::AuthenticationTokenAccess()) {
+        //if (Util::AuthenticationTokenAccess()) {
             if (empty($id) or empty($senha))
                 return 0;
 
@@ -153,8 +153,8 @@ class UsuarioController
             else :
                 return -1;
             endif;
-        } else {
-            return NAO_AUTORIZADO;
-        }
+       // } else {
+       //     return NAO_AUTORIZADO;
+       // }
     }
 }
