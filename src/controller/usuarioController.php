@@ -108,13 +108,13 @@ class UsuarioController
 
             if (password_verify($senha, $usuario['senha'])) {
 
-                $dados_usuario = [
+                $dados_usuario_tecnico = [
                     'id_tecnico' => $usuario['id'],
                     'nome_usuario' => $usuario['nome'],
                     'tipo_usuario' => $usuario['tipo']
                 ];
 
-                $token = Util::CreateTokenAuthentication($dados_usuario);
+                $token = Util::CreateTokenAuthentication($dados_usuario_tecnico);
                 return $token;
             } else {
                 return -3;

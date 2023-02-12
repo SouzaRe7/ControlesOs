@@ -37,8 +37,15 @@ class ChamadoDAO extends Conexao
         $sql->bindValue($i++, $vo->getLaudoTecnico());
         $sql->bindValue($i++, $vo->getTecnicoEncerramento());
         $sql->bindValue($i++, $vo->getIdChamado());
+        $this->conexao->beginTransaction();
         try {
             $sql->execute();
+            $sql = $this->conexao->prepare(chamadoSQL::ATUALIZAR_ALOCAMENTO());
+            $i = 1;
+            $sql->bindValue($i++, $vo->getSituacao());
+            $sql->bindValue($i++, $vo->getIdAlocar());
+            $sql->execute();
+            $this->conexao->commit();
             return 1;
         } catch (Exception $ex) {
             $vo->setMsgErro($ex->getMessage());

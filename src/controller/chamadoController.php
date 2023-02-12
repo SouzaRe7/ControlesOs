@@ -23,10 +23,11 @@ class ChamadoController{
 
     public function EncerrarAtendimentoChamadoCTRL(ChamadoVO $vo)
     {
-        if(empty($vo->getLaudoTecnico()) Or empty($vo->getIdChamado()) Or empty($vo->getTecnicoEncerramento()))
+        if(empty($vo->getLaudoTecnico()) Or empty($vo->getIdChamado()) Or empty($vo->getTecnicoEncerramento()) Or empty($vo->getIdAlocar()))
             return 0;
         $vo->setDataEncerramento(Util::GravaDataHoraAtual());
         $vo->setFuncaoErro(ENCERRAMENTO_CHAMADO);
+        $vo->setSituacao(SITUACAO_ALOCAR_EQUIPAMENTO);
 
         return $this->dao->EncerrarAtendimentoChamadoDAO($vo);
     }

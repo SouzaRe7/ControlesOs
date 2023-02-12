@@ -136,7 +136,7 @@ class UsuarioSQL{
                         senha,
                         tipo
                   FROM  tb_usuario
-             LEFT JOIN  tb_tecnico
+            INNER JOIN  tb_tecnico
                     ON  tb_usuario.id = tb_tecnico.tecnico_id
                  WHERE  login = ? AND status = ? AND tipo = ?";
         return $sql;

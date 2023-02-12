@@ -64,6 +64,7 @@ class TecnicoAPI extends apiRequest{
     {
         $vo = new ChamadoVO;
         $vo->setIdChamado($this->params['id_chamado']);
+        $vo->setIdAlocar($this->params['alocar_id']);
         $vo->setTecnicoEncerramento($this->params['id_tecnico_encerramento']);
         $vo->setLaudoTecnico($this->params['laudo']);
 
