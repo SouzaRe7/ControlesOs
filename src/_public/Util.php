@@ -189,7 +189,7 @@ class Util
         //Recupera todo o cabeçalho da requisição
         $http_header = apache_request_headers();
         //Se n for nulo
-        if ($http_header['Authorization'] != null) :
+        if ($http_header['Authorization'] != null && str_contains($http_header['Authorization'], '.')) :
             //quebra o bearer(autenticação de token)
             $bearer = explode(' ', $http_header['Authorization']);
             $token = explode('.', $bearer[1]);
