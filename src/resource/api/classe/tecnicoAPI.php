@@ -1,4 +1,5 @@
 <?php
+
 namespace Src\resource\api\classe;
 
 use Src\controller\ChamadoController;
@@ -8,10 +9,12 @@ use Src\controller\NovoEquipController;
 use Src\VO\UsuarioVO;
 use Src\VO\ChamadoVO;
 use Src\VO\TecnicoVO;
+use Src\_public\Util;
 
-class TecnicoAPI extends apiRequest{
-
+class TecnicoAPI extends apiRequest
+{
     private $ctrl_user;
+    private $ctrl_chamado;
     private $params;
     public function AddParameters($p)
     {
@@ -25,75 +28,104 @@ class TecnicoAPI extends apiRequest{
     public function __construct()
     {
         $this->ctrl_user = new UsuarioController;
-    
+        $this->ctrl_chamado = new ChamadoController;
     }
 
     public function DetalharMeusDados()
     {
-        if(empty($this->params['id_user']))
-            return 0;
+        if (Util::AuthenticationTokenAccess()) {
+            if (empty($this->params['id_user']))
+                return 0;
 
-        return $this->ctrl_user->DetalharUsuarioCTRL($this->params['id_user']);
+            return $this->ctrl_user->DetalharUsuarioCTRL($this->params['id_user']);
+        } else {
+            return NAO_AUTORIZADO;
+        }
     }
 
     public function AlterarTecnico()
     {
-        $vo = new TecnicoVO;
-        $vo->setNome($this->params['nome_usuario']);
-        $vo->setLogin($this->params['login']);
-        $vo->setFone($this->params['telefone']);
-        $vo->setCep($this->params['cep']);
-        $vo->setRua($this->params['rua']);
-        $vo->setBairro($this->params['bairro']);
-        $vo->setNomeCiadade($this->params['cidade']);
-        $vo->setSiglaEstado($this->params['uf']);
-        $vo->setNomeEmpresa($this->params['nome_empresa']);
-        $vo->setId($this->params['id_user']);
-        $vo->setIdEnd($this->params['id_end']);
-        $vo->setTipo($this->params['tipo']);
-       
-        return $this->ctrl_user->AlterarUsuarioCTRL($vo);
+        if (Util::AuthenticationTokenAccess()) {
+            $vo = new TecnicoVO;
+            $vo->setNome($this->params['nome_usuario']);
+            $vo->setLogin($this->params['login']);
+            $vo->setFone($this->params['telefone']);
+            $vo->setCep($this->params['cep']);
+            $vo->setRua($this->params['rua']);
+            $vo->setBairro($this->params['bairro']);
+            $vo->setNomeCiadade($this->params['cidade']);
+            $vo->setSiglaEstado($this->params['uf']);
+            $vo->setNomeEmpresa($this->params['nome_empresa']);
+            $vo->setId($this->params['id_user']);
+            $vo->setIdEnd($this->params['id_end']);
+            $vo->setTipo($this->params['tipo']);
+
+            return $this->ctrl_user->AlterarUsuarioCTRL($vo);
+        } else {
+            return NAO_AUTORIZADO;
+        }
     }
 
     public function FiltrarChamadoAPI()
     {
-        return (new ChamadoController)->FiltrarChamadoCTRL($this->params['situacao'], isset($this->params['id_setor']) ? $this->params['id_setor'] : '');
+        if (Util::AuthenticationTokenAccess()) {
+            return $this->ctrl_chamado->FiltrarChamadoCTRL($this->params['situacao'], isset($this->params['id_setor']) ? $this->params['id_setor'] : '');
+        } else {
+            return NAO_AUTORIZADO;
+        }
     }
 
     public function EncerrarAtendimentoChamadoAPI()
     {
-        $vo = new ChamadoVO;
-        $vo->setIdChamado($this->params['id_chamado']);
-        $vo->setIdAlocar($this->params['alocar_id']);
-        $vo->setTecnicoEncerramento($this->params['id_tecnico_encerramento']);
-        $vo->setLaudoTecnico($this->params['laudo']);
+        if (Util::AuthenticationTokenAccess()) {
+            $vo = new ChamadoVO;
+            $vo->setIdChamado($this->params['id_chamado']);
+            $vo->setIdAlocar($this->params['alocar_id']);
+            $vo->setTecnicoEncerramento($this->params['id_tecnico_encerramento']);
+            $vo->setLaudoTecnico($this->params['laudo']);
 
-        return (new ChamadoController)->EncerrarAtendimentoChamadoCTRL($vo);
+            return $this->ctrl_chamado->EncerrarAtendimentoChamadoCTRL($vo);
+        } else {
+            return NAO_AUTORIZADO;
+        }
     }
 
     public function AtualizarAtendimentoChamadoAPI()
     {
-        $vo = new ChamadoVO;
-        $vo->setTecnicoAtendimento($this->params['id_tecnico_atendimento']);
-        $vo->setIdChamado($this->params['id_chamado']);
+        if (Util::AuthenticationTokenAccess()) {
+            $vo = new ChamadoVO;
+            $vo->setTecnicoAtendimento($this->params['id_tecnico_atendimento']);
+            $vo->setIdChamado($this->params['id_chamado']);
 
-        return (new ChamadoController)->AtualizarAtendimentoChamadoCTRL($vo);
+            return $this->ctrl_chamado->AtualizarAtendimentoChamadoCTRL($vo);
+        } else {
+            return NAO_AUTORIZADO;
+        }
     }
 
     public function VerificarSenhaAtualAPI()
     {
-        return (new UsuarioController)->ValidarSenhaAtualCTRL($this->params['id'], $this->params['senha']);
+        if (Util::AuthenticationTokenAccess()) {
+            return $this->ctrl_user->ValidarSenhaAtualCTRL($this->params['id'], $this->params['senha']);
+        } else {
+            return NAO_AUTORIZADO;
+        }
     }
 
     public function AtualizarSenhaAPI()
     {
-        $vo = new UsuarioVO;
-        $vo->setId($this->params['id']);
-        $vo->setSenha($this->params['senha']);
-        return (new UsuarioController)->AtualizarSenhaAtualCTRL($vo, $this->params['repetir_senha']);
+        if (Util::AuthenticationTokenAccess()) {
+            $vo = new UsuarioVO;
+            $vo->setId($this->params['id']);
+            $vo->setSenha($this->params['senha']);
+            return $this->ctrl_user->AtualizarSenhaAtualCTRL($vo, $this->params['repetir_senha']);
+        } else {
+            return NAO_AUTORIZADO;
+        }
     }
 
-    public function AutenticarAPI(){
-        return (new UsuarioController)->VerificarLoginAcessoTecnicoCTRL ($this->params['login'], $this->params['senha']);
+    public function AutenticarAPI()
+    {
+        return $this->ctrl_user->VerificarLoginAcessoTecnicoCTRL($this->params['login'], $this->params['senha']);
     }
 }
