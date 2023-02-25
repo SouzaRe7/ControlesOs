@@ -117,7 +117,7 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a href="https://adminlte.io/docs/3.0" class="nav-link">
+              <a href="login.php?close=1" class="nav-link">
                 <i class="fas fa-power-off nav-icon" style="color: red;" ></i>
                 <p>Sair</p>
               </a>
