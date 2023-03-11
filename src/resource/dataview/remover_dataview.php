@@ -2,10 +2,12 @@
 include_once '_include_autoload.php';
 
 use Src\_public\Util;
+
+Util::VerificarLogin();
+
 use Src\controller\NovoEquipController;
 use Src\controller\setorController;
 use Src\VO\AlocarVO;
-use Src\VO\SetorVO;
 
 $equip = new NovoEquipController();
 

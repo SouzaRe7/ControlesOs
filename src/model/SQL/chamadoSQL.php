@@ -84,4 +84,13 @@ class chamadoSQL
             
         return $sql;
     }
+
+    public static function DADOS_CHAMADOS_SQL()
+    {
+        $sql = 'SELECT (SELECT count(id) FROM tb_chamado WHERE data_adendimento IS NULL) AS qtd_aguardando, 
+                (SELECT count(id) FROM tb_chamado WHERE data_adendimento IS NOT NULL AND data_encerramento IS NULL) AS qtd_atendimento, 
+                (SELECT count(id) FROM tb_chamado WHERE data_encerramento IS NOT NULL) AS qtd_finalizado';
+        return $sql;
+    }
+
 }

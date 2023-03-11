@@ -5,7 +5,6 @@ namespace Src\resource\api\classe;
 use Src\controller\ChamadoController;
 use Src\resource\api\classe\apiRequest;
 use Src\controller\UsuarioController;
-use Src\controller\NovoEquipController;
 use Src\VO\UsuarioVO;
 use Src\VO\ChamadoVO;
 use Src\VO\TecnicoVO;
@@ -129,3 +128,4 @@ class TecnicoAPI extends apiRequest
         return $this->ctrl_user->VerificarLoginAcessoTecnicoCTRL($this->params['login'], $this->params['senha']);
     }
 }
+?>

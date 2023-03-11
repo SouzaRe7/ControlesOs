@@ -1,9 +1,12 @@
 <?php
 include_once '_include_autoload.php';
 
+use Src\_public\Util;
+
+Util::VerificarLogin();
+
 use Src\VO\SetorVO;
 use Src\controller\setorController;
-use Src\model\setorDAO;
 
 $ctrl = new setorController();
 

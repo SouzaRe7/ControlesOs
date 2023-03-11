@@ -15,6 +15,13 @@ class ChamadoDAO extends Conexao
         $this->conexao = parent::retornaConexao();
     }
 
+    public function FiltrarDadosChamadoDAO()
+    {
+        $sql = $this->conexao->prepare(chamadoSQL::DADOS_CHAMADOS_SQL());
+        $sql->execute();
+        return $sql->fetch(\PDO::FETCH_ASSOC);
+    }
+
     public function FiltrarChamadoDAO($tipo, $id_setor)
     {
         $sql = $this->conexao->prepare(chamadoSQL::FILTAR_CHAMADO_SQL($tipo, $id_setor));

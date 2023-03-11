@@ -1,9 +1,12 @@
 <?php
 include_once '_include_autoload.php';
 
+use Src\_public\Util;
+
+Util::VerificarLogin();
+
 use Src\VO\ModeloVO;
 use Src\controller\ModeloController;
-use Src\model\ModeloDAO;
 
 $ctrl = new ModeloController();
 

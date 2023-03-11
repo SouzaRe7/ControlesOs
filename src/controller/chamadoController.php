@@ -14,6 +14,11 @@ class ChamadoController{
         $this->dao = new ChamadoDAO();
     }
 
+    public function FiltrarDadosChamadoCTRL()
+    {
+        return $this->dao->FiltrarDadosChamadoDAO();    
+    }
+
     public function FiltrarChamadoCTRL($tipo, $id_setor)
     {
         if (empty($tipo))

@@ -2,6 +2,9 @@
 include_once '_include_autoload.php';
 
 use Src\_public\Util;
+
+Util::VerificarLogin();
+
 use Src\controller\NovoEquipController;
 use Src\controller\setorController;
 use Src\VO\AlocarVO;
@@ -23,7 +26,7 @@ elseif (isset($_POST['btnPesquisar'])) :
     $equip = new NovoEquipController();
     $vo = new SetorVO;
     $vo->setIdSetor($_POST['admSetor']);
-    $equipamentos = $equip->SelecionarEquipamentoSetorCTRL($vo);
+    $equipamentos = $equip->SelecionarEquipamentoSetorAlocadoCTRL($vo);
     if(count($equipamentos) == 0) :
         echo "-1";  
     else : ?>

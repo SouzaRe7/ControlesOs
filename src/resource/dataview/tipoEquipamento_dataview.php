@@ -1,9 +1,12 @@
 <?php
 include_once '_include_autoload.php';
 
+use Src\_public\Util;
+
+Util::VerificarLogin();
+
 use Src\VO\TipoEquipamentoVO;
 use Src\controller\TipoEquipController;
-use Src\model\TipoEquipamentoDAO;
 
 $ctrl = new TipoEquipController();
 

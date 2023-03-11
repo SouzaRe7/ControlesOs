@@ -1,6 +1,6 @@
 <?php 
 use Src\_public\Util;
-require_once dirname(__DIR__, 2) . '/resource/dataview/usuario_dataview.php'; 
+require_once dirname(__DIR__, 2) . '/resource/dataview/acesso_dataview.php'; 
 if (isset($_GET['close']) && $_GET['close'] == '1') {
   Util::Deslogar();
 }

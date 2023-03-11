@@ -2,6 +2,9 @@
 include_once '_include_autoload.php';
 
 use Src\_public\Util;
+
+Util::VerificarLogin();
+
 use Src\controller\setorController;
 use Src\controller\UsuarioController;
 use Src\VO\FuncionarioVO;
@@ -145,7 +148,4 @@ elseif (isset($_GET['id_user']) and is_numeric($_GET['id_user'])) :
     if ($user['tipo'] == PERFIL_FUNCIONARIO) :
         $setor = $setorCTRL->SelecioneSetorCtrl();
     endif;
-elseif (isset($_POST['btnAcessar'])) :
-    $ret = $usuarioCTRL->VerificarLoginAcessoCTRL($_POST['login'], $_POST['senha']);    
-    Util::Mostrar($_POST);
 endif; ?>

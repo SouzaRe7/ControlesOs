@@ -133,3 +133,4 @@ class FuncionarioAPI extends apiRequest
         return $this->ctrl_user->VerificarLoginAcessoFuncionarioCTRL($this->params['login'], $this->params['senha']);
     }
 }
+?>

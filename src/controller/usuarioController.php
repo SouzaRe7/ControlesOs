@@ -94,7 +94,7 @@ class UsuarioController
             return -5;
 
         Util::CriarSessao($usuario['id'], $usuario['nome']);
-        Util::ChamarPagina('consultar_usuario.php');
+        Util::ChamarPagina('inicial_adm.php');
     }
 
     public function VerificarLoginAcessoTecnicoCTRL($login, $senha)

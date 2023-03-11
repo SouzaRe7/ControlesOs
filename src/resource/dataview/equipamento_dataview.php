@@ -2,6 +2,9 @@
 include_once '_include_autoload.php';
 
 use Src\_public\Util;
+
+Util::VerificarLogin();
+
 use Src\VO\EquipamentoVO;
 use Src\controller\TipoEquipController;
 use Src\controller\ModeloController;

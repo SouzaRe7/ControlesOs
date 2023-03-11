@@ -93,7 +93,6 @@ require_once dirname(__DIR__, 2) . '/resource/dataview/equipamento_dataview.php'
         </div>
         <!-- /.card -->
         <!-- /.content -->
-    </div>
     <!-- /.content-wrapper -->
     <?php include_once PATH_URL . '/template/_includes/_footer.php' ?>
     <!-- Control Sidebar -->
