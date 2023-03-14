@@ -169,19 +169,15 @@ class UsuarioController
 
     public function ValidarSenhaAtualCTRL($id, $senha)
     {
-        if (Util::AuthenticationTokenAccess()) {
-            if (empty($id) or empty($senha))
-                return 0;
+        if (empty($id) or empty($senha))
+            return 0;
 
-            $user_senha = $this->dao->RecuperarSenhaAtualDAO($id);
+        $user_senha = $this->dao->RecuperarSenhaAtualDAO($id);
 
-            if (password_verify($senha, $user_senha['senha'])) :
-                return 1;
-            else :
-                return -1;
-            endif;
-        } else {
-            return NAO_AUTORIZADO;
-        }
+        if (password_verify($senha, $user_senha['senha'])) :
+            return 1;
+        else :
+            return -1;
+        endif;
     }
 }

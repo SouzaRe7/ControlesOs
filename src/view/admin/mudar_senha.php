@@ -1,5 +1,8 @@
 <?php
-require_once dirname(__DIR__, 3) . '/vendor/autoload.php';
+
+use Src\_public\Util;
+
+require_once dirname(__DIR__, 2) . '/resource/dataview/meusDados_dataview.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -26,7 +29,7 @@ require_once dirname(__DIR__, 3) . '/vendor/autoload.php';
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="#">Funcionário</a></li>
+                                <li class="breadcrumb-item"><a href="#">Administrador</a></li>
                                 <li class="breadcrumb-item active">Mudar senha</li>
                             </ol>
                         </div>
@@ -48,30 +51,38 @@ require_once dirname(__DIR__, 3) . '/vendor/autoload.php';
                     </div>
                     <div class="card-body">
                         <div class="form-group">
-                            <form action="mudar_senha.php" method="post">
-                                <div class="form-group">
-                                    <label>Senha atual</label>
-                                    <input id="fuSenhaAtual" name="fuSenhaAtual" type="password" class="form-control">
+                            <form action="mudar_senha.php" method="post" id="formSenha">
+                                <input type="hidden" id="id_logado" value="<?= Util::CodigoLogado();?>">
+                                <div id="divSenhaAtual">
+                                    <div class="form-group">
+                                        <label>Senha atual</label>
+                                        <input id="fuSenhaAtual" name="fuSenhaAtual" type="password" class="form-control obg">
+                                    </div>
+                                    <div class="form-group">
+                                        <button onclick=" return VerificarSenhaAtual('formSenha')" name="btnVerificar" type="button"  class="btn btn-block btn-primary col-md-4">Verificar</button>
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <label>Nova senha</label>
-                                    <input id="fuSenha" name="fuSenha" class="form-control" placeholder="Nova senha">
-                                </div>
-                                <div class="form-group">
-                                    <label>Repetir senha</label>
-                                    <input id="fuReSenha" name="fuReSenha" class="form-control" placeholder="Repetir senha">
-                                </div>
-                                <div class="form-group">
-                                    <button onclick=" return ValidarCampos(10)" name="btnGravar" type="button" class="btn btn-block btn-primary col-md-4">Gravar</button>
-                                </div>
+                            </form>
+                            <form action="mudar_senha.php" method="post" id="formNovaSenha">
+                                <input type="hidden" id="id_logado" value="<?= Util::CodigoLogado();?>">    
+                                <div class="ocultar" id="divSenhaNova">
+                                    <div class="form-group">
+                                        <label>Nova senha</label>
+                                        <input id="fuSenha" name="fuSenha" class="form-control obg" type="password" placeholder="Nova senha">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Repetir senha</label>
+                                        <input id="fuReSenha" name="fuReSenha" class="form-control obg" type="password" placeholder="Repetir senha">
+                                    </div>
+                                    <div class="form-group">
+                                        <button onclick=" return AtualizarSenha('formNovaSenha')" name="btnAlterar" type="button" class="btn btn-block btn-primary col-md-4">Alterar</button>
+                                    </div>
+                                </div>    
                             </form>
                         </div>
                     </div>
-
-
                 </div>
                 <!-- /.card -->
-
             </section>
             <!-- /.content -->
         </div>
@@ -84,8 +95,8 @@ require_once dirname(__DIR__, 3) . '/vendor/autoload.php';
         <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->
-
     <?php include_once PATH_URL . '/template/_includes/_script.php' ?>
+    <script src="../../resource/ajax/meus_dados-ajx.js"></script>
 </body>
 
 </html>

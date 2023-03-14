@@ -74,13 +74,13 @@ elseif (isset($_POST['btnPesquisar'])) :
          <?php for ($i = 0; $i < count($novosEquipamento); $i++ ) : ?>
                <tr>
                   <td>
-                     <a href="novo_equipamento.php?Cod=<?= $novosEquipamento[0]['id'] ?>" class="btn btn-warning btn-xs">Alterar</a>
-                     <a onclick="CarregarModalExcluir('<?= $novosEquipamento[0]['id'] ?>','<?= $novosEquipamento[0]['nomeTipo'] ?>')" data-toggle="modal" data-target="#modal-excluir" class="btn btn-danger btn-xs">Excluir</a>
+                     <a href="novo_equipamento.php?Cod=<?= $novosEquipamento[$i]['id'] ?>" class="btn btn-warning btn-xs">Alterar</a>
+                     <a onclick="CarregarModalExcluir('<?= $novosEquipamento[$i]['id'] ?>','<?= $novosEquipamento[$i]['nomeTipo'] ?>')" data-toggle="modal" data-target="#modal-excluir" class="btn btn-danger btn-xs">Excluir</a>
                   </td>
-                  <td><?= $novosEquipamento[0]['nomeTipo'] ?></td>
-                  <td><?= $novosEquipamento[0]['nomeModelo'] ?></td>
-                  <td><?= $novosEquipamento[0]['identificacao'] ?></td>
-                  <td><?= $novosEquipamento[0]['descricao'] ?></td>
+                  <td><?= $novosEquipamento[$i]['nomeTipo'] ?></td>
+                  <td><?= $novosEquipamento[$i]['nomeModelo'] ?></td>
+                  <td><?= $novosEquipamento[$i]['identificacao'] ?></td>
+                  <td><?= $novosEquipamento[$i]['descricao'] ?></td>
                </tr>
             <?php endfor; ?>
          </tbody>
@@ -95,3 +95,4 @@ else :
    $dadosModelo = $modeloCTRL->SelecioneModeloCtrl();
 
 endif;
+?>

@@ -57,10 +57,8 @@ function AlocarEquipamentoAjx(id_form) {
     return false;
 }
 function FiltrarPorTipoEquipamento(id_form) {
-
     let idTipo = $("#admPesquise").val();
     let nomePalavra = $("#filtroPalavra").val();
-
     if (NotificarCamposGenerico(id_form)) {
         $.ajax({
             type: "post",
@@ -74,9 +72,11 @@ function FiltrarPorTipoEquipamento(id_form) {
                 if (retTipo != "-3") {
                     $("#lista").html(retTipo);
                     $("#divResult").show();
+                    $("#divBtnImprimir").show();
                 } else {
                     MensagemVazio();
                     $("#lista").html('');
+                   $("#divBtnImprimir").hide();
                     $("#divResult").hide();
                 }
             }
@@ -144,4 +144,10 @@ function CarregarEqSetor(){
         }
     })
     return false;
+}
+
+function Imprimir(){
+    let tipo = $("#admPesquise").val();
+    let filtroPalavra = $("#filtroPalavra").val();
+    location = "relatorio_equipamento.php?filtro=" + tipo + "&desc_filtro=" + filtroPalavra;
 }

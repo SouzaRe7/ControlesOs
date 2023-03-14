@@ -58,11 +58,14 @@ require_once dirname(__DIR__, 2) . '/resource/dataview/equipamento_dataview.php'
                                     </select>
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label>Escolha o filtro</label>
+                                    <label>Descrição</label>
                                     <input id="filtroPalavra" name="filtroPalavra" class="form-control obg" placeholder="Escolha o filtro">
                                 </div>
                                 <div class="form-group col-md-4">
                                     <button name="btnPesquisar" id="btnPesquisar" type="button" onclick="return FiltrarPorTipoEquipamento('formConsulta')" class="btn btn-block bg-gradient-primary">Pesquisar</button>
+                                </div>
+                                <div id="divBtnImprimir" class="form-group col-md-4 ocultar">
+                                    <button name="btnImprimir" id="btnImprimir" type="button" onclick="return Imprimir()" class="btn btn-block bg-gradient-info">Imprimir</button>
                                 </div>
                             </div>
                         </form>

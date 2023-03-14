@@ -124,7 +124,9 @@ elseif (isset($_POST['filtrarPessoa']) and $_POST['filtrarPessoa'] == 'ajx') :
                 <tr>
                     <td>
                         <a href="alterar_usuario.php?id_user=<?= $p['id'] ?>" class="btn btn-warning btn-xs">Alterar</a>
+                        <?php if ($p['id'] != Util::CodigoLogado()) { ?>
                         <a onclick="CarregarModalStatus('<?= $p['id'] ?>','<?= $p['nome'] ?>','<?= $p['status'] ?>')" data-toggle="modal" data-target="#modal-status" class="btn btn-<?= $p['status'] == STATUS_ATIVO ? "danger" : "success" ?> btn-xs"><?= $p['status'] == STATUS_ATIVO ? "Inativar" : "Ativar" ?></a>
+                        <?php } ?>
                     </td>
                     <td><?= $p['nome'] ?></td>
                     <td><?= Util::DescricaoTipo($p['tipo']) ?></td>
@@ -140,7 +142,7 @@ elseif (isset($_POST['mudarStatus']) and $_POST['mudarStatus'] == 'ajx') :
     $vo->setStatus($_POST['statusAtual']);
     echo $usuarioCTRL->MudarStatusCTRL($vo);
 elseif (isset($_GET['id_user']) and is_numeric($_GET['id_user'])) :
-    $id = $_GET['id_user'];
+    $id = $_GET['id_user'];    
     $user = $usuarioCTRL->DetalharUsuarioCTRL($id);
     if (empty($user)) :
         Util::ChamarPagina("consultar_usuario.php");

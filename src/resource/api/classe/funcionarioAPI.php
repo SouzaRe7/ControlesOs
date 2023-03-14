@@ -107,6 +107,15 @@ class FuncionarioAPI extends apiRequest
         }
     }
 
+    public function VerificarEmailAPI()
+    {
+        if (Util::AuthenticationTokenAccess()) {
+            return $this->ctrl_user->VerificarEmailDuplicadoCTRL($this->params['fuEmail'], $this->params['id']);
+        } else {
+            return NAO_AUTORIZADO;
+        }
+    }
+
     public function VerificarSenhaAtualAPI()
     {
         if (Util::AuthenticationTokenAccess()) {
